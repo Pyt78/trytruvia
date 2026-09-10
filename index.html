@@ -27,13 +27,13 @@
         TRUVIA
       </a>
       <nav class="hidden items-center gap-8 text-sm text-slate-600 md:flex">
-        <a href="#platform" class="hover:text-slate-950">Platform</a>
-        <a href="#use-cases" class="hover:text-slate-950">Solutions</a>
-        <a href="#integrations" class="hover:text-slate-950">Integrations</a>
-        <a href="#security" class="hover:text-slate-950">Security</a>
-        <a href="#resources" class="hover:text-slate-950">Resources</a>
+        <a href="#platform" class="transition hover:text-slate-950">Platform</a>
+        <a href="#use-cases" class="transition hover:text-slate-950">Solutions</a>
+        <a href="#integrations" class="transition hover:text-slate-950">Integrations</a>
+        <a href="#security" class="transition hover:text-slate-950">Security</a>
+        <a href="#resources" class="transition hover:text-slate-950">Resources</a>
       </nav>
-      <a href="#demo" class="rounded-full bg-slate-950 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-slate-800">
+      <a href="#demo" class="rounded-full bg-slate-950 px-5 py-2.5 text-sm font-medium text-white shadow-sm shadow-slate-900/10 transition hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-lg hover:shadow-slate-900/15">
         Book a demo
       </a>
     </div>
@@ -43,8 +43,9 @@
   <main>
     <section class="relative overflow-hidden">
       <div class="absolute inset-0 grid-bg"></div>
-      <div class="orb absolute -left-20 top-20 h-80 w-80 rounded-full bg-cyan-200/40"></div>
-      <div class="orb absolute -right-20 top-0 h-96 w-96 rounded-full bg-violet-200/40"></div>
+      <div class="orb orb-float absolute -left-20 top-20 h-80 w-80 rounded-full bg-cyan-200/50"></div>
+      <div class="orb orb-float-slow absolute -right-20 top-0 h-96 w-96 rounded-full bg-violet-200/50"></div>
+      <div class="orb orb-float absolute left-1/2 top-40 h-72 w-72 -translate-x-1/2 rounded-full bg-emerald-100/50"></div>
       <div class="relative mx-auto max-w-7xl px-6 pb-20 pt-24 lg:px-8 lg:pb-28 lg:pt-32">
         <div class="mx-auto max-w-4xl text-center fade-up">
           <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-4 py-2 text-xs font-medium text-slate-600 shadow-sm">
@@ -52,21 +53,23 @@
             Built for the GCC. Designed for the modern enterprise.
           </div>
           <h1 class="text-5xl font-semibold leading-[.98] tracking-[-0.065em] sm:text-6xl lg:text-8xl">
-            Trust, on<br />autopilot.
+            Trust, on<br /><span class="text-gradient">autopilot.</span>
           </h1>
           <p class="mx-auto mt-7 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
             Truvia is the agentic trust platform that continuously maps regulation,
             controls, systems, evidence and risk — so your organization stays ready without the compliance busywork.
           </p>
           <div class="mx-auto mt-9 flex max-w-xl flex-col gap-3 sm:flex-row">
-            <input class="min-h-12 flex-1 rounded-full border border-slate-300 bg-white px-5 text-sm outline-none placeholder:text-slate-400 focus:border-slate-950" placeholder="What's your work email?" type="email" />
-            <a href="#demo" class="grid min-h-12 place-items-center rounded-full bg-slate-950 px-7 text-sm font-medium text-white hover:bg-slate-800">Book a demo</a>
+            <input class="min-h-12 flex-1 rounded-full border border-slate-300 bg-white px-5 text-sm shadow-sm outline-none transition placeholder:text-slate-400 focus:border-slate-950 focus:ring-4 focus:ring-slate-950/5" placeholder="What's your work email?" type="email" />
+            <a href="#demo" class="group grid min-h-12 place-items-center rounded-full bg-slate-950 px-7 text-sm font-medium text-white shadow-lg shadow-slate-900/10 transition hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/20">
+              <span class="flex items-center gap-2">Book a demo <span class="transition-transform group-hover:translate-x-1">→</span></span>
+            </a>
           </div>
           <p class="mt-4 text-xs text-slate-400">No implementation marathon. Connect your systems and start seeing your trust posture.</p>
         </div>
 
         <!-- PRODUCT VISUAL -->
-        <div class="relative mx-auto mt-16 max-w-6xl">
+        <div class="reveal relative mx-auto mt-16 max-w-6xl">
           <div class="absolute -inset-8 rounded-[2rem] bg-gradient-to-r from-cyan-200/30 via-white to-violet-200/30 blur-2xl"></div>
           <div class="relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_30px_100px_rgba(15,23,42,.12)]">
             <div class="flex items-center justify-between border-b border-slate-200 px-5 py-4">
@@ -75,7 +78,7 @@
                 <span class="text-sm font-semibold">Truvia Command Center</span>
               </div>
               <div class="flex items-center gap-2 text-xs text-slate-500">
-                <span class="h-2 w-2 rounded-full bg-emerald-500"></span> Trust posture: Healthy
+                <span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span></span> Trust posture: Healthy
               </div>
             </div>
             <div class="grid min-h-[430px] grid-cols-1 lg:grid-cols-[220px_1fr]">
@@ -94,24 +97,24 @@
                 <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
                   <div>
                     <p class="text-xs font-medium uppercase tracking-wider text-slate-400">Trust posture</p>
-                    <p class="mt-1 text-3xl font-semibold tracking-tight">94.8%</p>
+                    <p class="mt-1 text-3xl font-semibold tracking-tight" data-count-to="94.8" data-count-decimals="1" data-count-suffix="%" data-count-final="94.8%">94.8%</p>
                   </div>
                   <span class="rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-700">↑ 4.2% this month</span>
                 </div>
                 <div class="mt-6 grid gap-4 sm:grid-cols-3">
                   <div class="rounded-xl border border-slate-200 p-4">
                     <p class="text-xs text-slate-500">Controls monitored</p>
-                    <p class="mt-2 text-2xl font-semibold">428</p>
+                    <p class="mt-2 text-2xl font-semibold" data-count-to="428" data-count-final="428">428</p>
                     <p class="mt-1 text-xs text-emerald-600">412 healthy</p>
                   </div>
                   <div class="rounded-xl border border-slate-200 p-4">
                     <p class="text-xs text-slate-500">Evidence current</p>
-                    <p class="mt-2 text-2xl font-semibold">96%</p>
+                    <p class="mt-2 text-2xl font-semibold" data-count-to="96" data-count-suffix="%" data-count-final="96%">96%</p>
                     <p class="mt-1 text-xs text-slate-400">17 need attention</p>
                   </div>
                   <div class="rounded-xl border border-slate-200 p-4">
                     <p class="text-xs text-slate-500">Open risks</p>
-                    <p class="mt-2 text-2xl font-semibold">07</p>
+                    <p class="mt-2 text-2xl font-semibold" data-count-to="7" data-count-pad="true" data-count-final="07">07</p>
                     <p class="mt-1 text-xs text-amber-600">3 high priority</p>
                   </div>
                 </div>
@@ -121,7 +124,7 @@
                       <p class="text-sm font-semibold">Agent activity</p>
                       <p class="mt-1 text-xs text-slate-500">Truvia is continuously working in the background.</p>
                     </div>
-                    <span class="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-semibold text-slate-600">LIVE</span>
+                    <span class="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-semibold text-slate-600"><span class="h-1.5 w-1.5 animate-pulse rounded-full bg-rose-500"></span>LIVE</span>
                   </div>
                   <div class="mt-5 space-y-3 text-xs">
                     <div class="flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="font-medium">Regulatory Agent</span><span class="ml-auto text-slate-400">Reviewed UAE PDPL update</span></div>
@@ -141,7 +144,7 @@
     <section class="overflow-hidden border-y border-slate-200 bg-white py-7">
       <div class="mx-auto max-w-7xl px-6">
         <p class="text-center text-xs font-medium uppercase tracking-[.18em] text-slate-400">Built for companies operating in high-trust environments</p>
-        <div class="mt-6 flex gap-14 whitespace-nowrap opacity-50">
+        <div class="marquee-mask mt-6 flex gap-14 whitespace-nowrap opacity-50">
           <div class="marquee flex min-w-max gap-14 text-lg font-semibold text-slate-700">
             <span>FINANCE</span><span>ENERGY</span><span>HEALTHCARE</span><span>GOVERNMENT</span><span>AI</span><span>TECHNOLOGY</span>
             <span>FINANCE</span><span>ENERGY</span><span>HEALTHCARE</span><span>GOVERNMENT</span><span>AI</span><span>TECHNOLOGY</span>
@@ -152,31 +155,31 @@
 
     <!-- PLATFORM -->
     <section id="platform" class="mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
-      <div class="max-w-3xl">
+      <div class="reveal max-w-3xl">
         <p class="text-xs font-semibold uppercase tracking-[.2em] text-slate-400">THE PLATFORM</p>
         <h2 class="mt-4 text-4xl font-semibold tracking-[-.05em] sm:text-5xl">Compliance shouldn't be a quarterly project.</h2>
         <p class="mt-5 text-lg leading-8 text-slate-600">Truvia brings your regulatory obligations, controls, systems, evidence and risk into one continuously updated trust layer.</p>
       </div>
 
-      <div class="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div class="text-2xl">◌</div>
-          <h3 class="mt-12 text-lg font-semibold">Regulatory Intelligence</h3>
+      <div class="reveal mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-cyan-50 to-cyan-100 text-xl text-cyan-700">◌</div>
+          <h3 class="mt-6 text-lg font-semibold">Regulatory Intelligence</h3>
           <p class="mt-2 text-sm leading-6 text-slate-500">Track regulatory changes and understand exactly which controls, policies and teams are affected.</p>
         </div>
-        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div class="text-2xl">⌁</div>
-          <h3 class="mt-12 text-lg font-semibold">Control Automation</h3>
+        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 text-xl text-blue-700">⌁</div>
+          <h3 class="mt-6 text-lg font-semibold">Control Automation</h3>
           <p class="mt-2 text-sm leading-6 text-slate-500">Continuously test controls against the systems where your business actually operates.</p>
         </div>
-        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div class="text-2xl">⊙</div>
-          <h3 class="mt-12 text-lg font-semibold">Evidence Collection</h3>
+        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-violet-50 to-violet-100 text-xl text-violet-700">⊙</div>
+          <h3 class="mt-6 text-lg font-semibold">Evidence Collection</h3>
           <p class="mt-2 text-sm leading-6 text-slate-500">Collect, validate and organize evidence automatically instead of chasing screenshots and spreadsheets.</p>
         </div>
-        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div class="text-2xl">↗</div>
-          <h3 class="mt-12 text-lg font-semibold">Risk & Remediation</h3>
+        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-amber-50 to-amber-100 text-xl text-amber-700">↗</div>
+          <h3 class="mt-6 text-lg font-semibold">Risk &amp; Remediation</h3>
           <p class="mt-2 text-sm leading-6 text-slate-500">Surface gaps, prioritize risk and trigger remediation workflows with a complete audit trail.</p>
         </div>
       </div>
@@ -185,22 +188,46 @@
     <!-- INTEGRATIONS -->
     <section id="integrations" class="border-y border-slate-200 bg-white">
       <div class="mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
-        <div class="grid gap-14 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+        <div class="reveal grid gap-14 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
           <div>
             <p class="text-xs font-semibold uppercase tracking-[.2em] text-slate-400">INTEGRATIONS</p>
             <h2 class="mt-4 text-4xl font-semibold tracking-[-.05em] sm:text-5xl">Connect your stack. Truvia does the rest.</h2>
             <p class="mt-5 text-lg leading-8 text-slate-600">Truvia connects to the systems that contain the truth about your organization — identity, cloud, HR, finance, security and more.</p>
-            <a href="#demo" class="mt-7 inline-flex rounded-full border border-slate-300 px-5 py-2.5 text-sm font-medium hover:bg-slate-50">Explore integrations →</a>
+            <a href="#demo" class="group mt-7 inline-flex items-center gap-2 rounded-full border border-slate-300 px-5 py-2.5 text-sm font-medium transition hover:border-slate-950 hover:bg-slate-950 hover:text-white">Explore integrations <span class="transition-transform group-hover:translate-x-1">→</span></a>
           </div>
-          <div class="grid grid-cols-3 gap-3 sm:grid-cols-4">
-            <div class="grid aspect-square place-items-center rounded-2xl border border-slate-200 bg-slate-50 text-xs font-semibold">AWS</div>
-            <div class="grid aspect-square place-items-center rounded-2xl border border-slate-200 bg-slate-50 text-xs font-semibold">Azure</div>
-            <div class="grid aspect-square place-items-center rounded-2xl border border-slate-200 bg-slate-50 text-xs font-semibold">Okta</div>
-            <div class="grid aspect-square place-items-center rounded-2xl border border-slate-200 bg-slate-50 text-xs font-semibold">Google</div>
-            <div class="grid aspect-square place-items-center rounded-2xl border border-slate-200 bg-slate-50 text-xs font-semibold">GitHub</div>
-            <div class="grid aspect-square place-items-center rounded-2xl border border-slate-200 bg-slate-50 text-xs font-semibold">Jira</div>
-            <div class="grid aspect-square place-items-center rounded-2xl border border-slate-200 bg-slate-50 text-xs font-semibold">Slack</div>
-            <div class="grid aspect-square place-items-center rounded-2xl border border-slate-200 bg-slate-50 text-xs font-semibold">SAP</div>
+          <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div class="card-hover flex aspect-square flex-col items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white">
+              <img src="/assets/logos/aws.svg" alt="Amazon Web Services" width="32" height="32" loading="lazy" class="h-8 w-8 opacity-80" />
+              <span class="text-xs font-medium text-slate-500">AWS</span>
+            </div>
+            <div class="card-hover flex aspect-square flex-col items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white">
+              <img src="/assets/logos/azure.svg" alt="Microsoft Azure" width="32" height="32" loading="lazy" class="h-8 w-8 opacity-80" />
+              <span class="text-xs font-medium text-slate-500">Azure</span>
+            </div>
+            <div class="card-hover flex aspect-square flex-col items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white">
+              <img src="/assets/logos/googlecloud.svg" alt="Google Cloud" width="32" height="32" loading="lazy" class="h-8 w-8 opacity-80" />
+              <span class="text-xs font-medium text-slate-500">Google Cloud</span>
+            </div>
+            <div class="card-hover flex aspect-square flex-col items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white">
+              <img src="/assets/logos/okta.svg" alt="Okta" width="32" height="32" loading="lazy" class="h-8 w-8 opacity-80" />
+              <span class="text-xs font-medium text-slate-500">Okta</span>
+            </div>
+            <div class="card-hover flex aspect-square flex-col items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white">
+              <img src="/assets/logos/github.svg" alt="GitHub" width="32" height="32" loading="lazy" class="h-8 w-8 opacity-80" />
+              <span class="text-xs font-medium text-slate-500">GitHub</span>
+            </div>
+            <div class="card-hover flex aspect-square flex-col items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white">
+              <img src="/assets/logos/jira.svg" alt="Jira" width="32" height="32" loading="lazy" class="h-8 w-8 opacity-80" />
+              <span class="text-xs font-medium text-slate-500">Jira</span>
+            </div>
+            <div class="card-hover flex aspect-square flex-col items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white">
+              <img src="/assets/logos/slack.svg" alt="Slack" width="32" height="32" loading="lazy" class="h-8 w-8 opacity-80" />
+              <span class="text-xs font-medium text-slate-500">Slack</span>
+            </div>
+            <div class="card-hover flex aspect-square flex-col items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white">
+              <img src="/assets/logos/sap.svg" alt="SAP" width="32" height="32" loading="lazy" class="h-8 w-8 opacity-80" />
+              <span class="text-xs font-medium text-slate-500">SAP</span>
+            </div>
           </div>
         </div>
       </div>
@@ -208,24 +235,24 @@
 
     <!-- USE CASES -->
     <section id="use-cases" class="mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
-      <div class="text-center">
+      <div class="reveal text-center">
         <p class="text-xs font-semibold uppercase tracking-[.2em] text-slate-400">BUILT FOR THE WORK</p>
         <h2 class="mx-auto mt-4 max-w-3xl text-4xl font-semibold tracking-[-.05em] sm:text-5xl">One trust layer. Every compliance workflow.</h2>
       </div>
-      <div class="mt-14 grid gap-4 lg:grid-cols-3">
-        <div class="rounded-2xl border border-slate-200 bg-white p-7">
+      <div class="reveal mt-14 grid gap-4 lg:grid-cols-3">
+        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7">
           <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Security</p>
           <h3 class="mt-3 text-2xl font-semibold">Stay continuously audit-ready</h3>
           <p class="mt-3 text-sm leading-6 text-slate-500">Automate evidence, control testing and remediation across security frameworks and internal policies.</p>
           <div class="mt-8 border-t border-slate-100 pt-5 text-sm font-medium">ISO 27001 · SOC 2 · NIST →</div>
         </div>
-        <div class="rounded-2xl border border-slate-200 bg-white p-7">
+        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7">
           <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Regulated Industries</p>
           <h3 class="mt-3 text-2xl font-semibold">Understand every obligation</h3>
           <p class="mt-3 text-sm leading-6 text-slate-500">Map regulatory requirements to controls, owners and evidence across UAE and GCC regulatory regimes.</p>
           <div class="mt-8 border-t border-slate-100 pt-5 text-sm font-medium">UAE · ADGM · DIFC · GCC →</div>
         </div>
-        <div class="rounded-2xl border border-slate-200 bg-white p-7">
+        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7">
           <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">AI Governance</p>
           <h3 class="mt-3 text-2xl font-semibold">Govern AI with confidence</h3>
           <p class="mt-3 text-sm leading-6 text-slate-500">Inventory AI systems, monitor controls, document decisions and prepare for emerging AI governance requirements.</p>
@@ -238,13 +265,13 @@
     <section class="relative overflow-hidden bg-slate-950 text-white">
       <div class="absolute inset-0 opacity-20 grid-bg"></div>
       <div class="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
-        <div class="grid gap-16 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
+        <div class="reveal grid gap-16 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
           <div>
             <p class="text-xs font-semibold uppercase tracking-[.2em] text-slate-500">AGENTIC TRUST</p>
             <h2 class="mt-4 text-4xl font-semibold tracking-[-.05em] sm:text-5xl">Your compliance team shouldn't have to watch everything.</h2>
             <p class="mt-5 text-lg leading-8 text-slate-400">Truvia agents work continuously in the background — detecting changes, collecting evidence, testing controls and escalating what actually needs a human.</p>
           </div>
-          <div class="rounded-3xl border border-white/10 bg-white/[.04] p-5">
+          <div class="rounded-3xl border border-white/10 bg-white/[.04] p-5 shadow-2xl shadow-black/40 backdrop-blur">
             <div class="space-y-3">
               <div class="rounded-2xl border border-white/10 bg-white/[.05] p-5">
                 <div class="flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-emerald-400"></span><span class="text-sm font-semibold">Regulatory Agent</span><span class="ml-auto text-xs text-slate-500">2m ago</span></div>
@@ -266,12 +293,12 @@
 
     <!-- SECURITY -->
     <section id="security" class="mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
-      <div class="max-w-3xl">
+      <div class="reveal max-w-3xl">
         <p class="text-xs font-semibold uppercase tracking-[.2em] text-slate-400">SECURITY</p>
         <h2 class="mt-4 text-4xl font-semibold tracking-[-.05em] sm:text-5xl">Trust requires trust.</h2>
         <p class="mt-5 text-lg leading-8 text-slate-600">Truvia is designed for organizations where the platform itself must meet a high bar for security, privacy and control.</p>
       </div>
-      <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="reveal mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-6"><h3 class="font-semibold">Least privilege</h3><p class="mt-2 text-sm leading-6 text-slate-500">Agents only access what they need to perform approved actions.</p></div>
         <div class="rounded-2xl border border-slate-200 bg-white p-6"><h3 class="font-semibold">Human approval</h3><p class="mt-2 text-sm leading-6 text-slate-500">High-impact actions can require deterministic approval.</p></div>
         <div class="rounded-2xl border border-slate-200 bg-white p-6"><h3 class="font-semibold">Full audit trail</h3><p class="mt-2 text-sm leading-6 text-slate-500">Every agent action, evidence change and decision is logged.</p></div>
@@ -282,27 +309,30 @@
     <!-- IMPLEMENTATION -->
     <section id="resources" class="border-y border-slate-200 bg-white">
       <div class="mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
-        <div class="text-center">
+        <div class="reveal text-center">
           <p class="text-xs font-semibold uppercase tracking-[.2em] text-slate-400">GET STARTED</p>
           <h2 class="mt-4 text-4xl font-semibold tracking-[-.05em] sm:text-5xl">From demo to trust posture in three steps.</h2>
         </div>
-        <div class="mt-14 grid gap-0 overflow-hidden rounded-3xl border border-slate-200 md:grid-cols-3">
-          <div class="p-7 md:border-r md:border-slate-200"><span class="text-xs font-semibold text-slate-400">01</span><h3 class="mt-12 text-xl font-semibold">Connect your systems</h3><p class="mt-3 text-sm leading-6 text-slate-500">Connect identity, cloud, HR, security and business systems to establish your trust graph.</p></div>
-          <div class="border-t border-slate-200 p-7 md:border-r md:border-t-0 md:border-slate-200"><span class="text-xs font-semibold text-slate-400">02</span><h3 class="mt-12 text-xl font-semibold">Map your obligations</h3><p class="mt-3 text-sm leading-6 text-slate-500">Truvia maps requirements to controls, owners, systems and evidence.</p></div>
-          <div class="border-t border-slate-200 p-7 md:border-t-0"><span class="text-xs font-semibold text-slate-400">03</span><h3 class="mt-12 text-xl font-semibold">Let agents operate</h3><p class="mt-3 text-sm leading-6 text-slate-500">Agents continuously monitor, collect, test, flag and route work while humans stay in control.</p></div>
+        <div class="reveal mt-14 grid gap-0 overflow-hidden rounded-3xl border border-slate-200 md:grid-cols-3">
+          <div class="p-7 transition hover:bg-slate-50 md:border-r md:border-slate-200"><span class="grid h-9 w-9 place-items-center rounded-full border border-slate-200 text-xs font-semibold text-slate-500">01</span><h3 class="mt-6 text-xl font-semibold">Connect your systems</h3><p class="mt-3 text-sm leading-6 text-slate-500">Connect identity, cloud, HR, security and business systems to establish your trust graph.</p></div>
+          <div class="border-t border-slate-200 p-7 transition hover:bg-slate-50 md:border-r md:border-t-0 md:border-slate-200"><span class="grid h-9 w-9 place-items-center rounded-full border border-slate-200 text-xs font-semibold text-slate-500">02</span><h3 class="mt-6 text-xl font-semibold">Map your obligations</h3><p class="mt-3 text-sm leading-6 text-slate-500">Truvia maps requirements to controls, owners, systems and evidence.</p></div>
+          <div class="border-t border-slate-200 p-7 transition hover:bg-slate-50 md:border-t-0"><span class="grid h-9 w-9 place-items-center rounded-full border border-slate-200 text-xs font-semibold text-slate-500">03</span><h3 class="mt-6 text-xl font-semibold">Let agents operate</h3><p class="mt-3 text-sm leading-6 text-slate-500">Agents continuously monitor, collect, test, flag and route work while humans stay in control.</p></div>
         </div>
       </div>
     </section>
 
     <!-- CTA -->
     <section id="demo" class="relative overflow-hidden bg-slate-950 text-white">
+      <div class="absolute inset-0 opacity-[.18] grid-bg"></div>
+      <div class="orb orb-float absolute -left-16 bottom-0 h-72 w-72 rounded-full bg-cyan-500/20"></div>
+      <div class="orb orb-float-slow absolute -right-16 top-0 h-72 w-72 rounded-full bg-violet-500/20"></div>
       <div class="relative mx-auto max-w-5xl px-6 py-28 text-center lg:py-36">
         <p class="text-xs font-semibold uppercase tracking-[.2em] text-slate-500">TRUVIA</p>
         <h2 class="mt-5 text-5xl font-semibold tracking-[-.06em] sm:text-7xl">Your trust posture<br />should run itself.</h2>
         <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-400">See how Truvia can turn continuous compliance into an autonomous operating layer.</p>
         <div class="mx-auto mt-9 flex max-w-xl flex-col gap-3 sm:flex-row">
           <input class="min-h-12 flex-1 rounded-full border border-white/10 bg-white/10 px-5 text-sm outline-none placeholder:text-slate-500" placeholder="What's your work email?" type="email" />
-          <button class="min-h-12 rounded-full bg-white px-7 text-sm font-medium text-slate-950 hover:bg-slate-100">Get started</button>
+          <button class="min-h-12 rounded-full bg-white px-7 text-sm font-medium text-slate-950 transition hover:-translate-y-0.5 hover:bg-slate-100">Get started</button>
         </div>
       </div>
     </section>
@@ -331,5 +361,64 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealTargets = document.querySelectorAll('.reveal');
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      revealTargets.forEach((el) => el.classList.add('is-visible'));
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.1 });
+      revealTargets.forEach((el) => observer.observe(el));
+    }
+
+    const countTargets = document.querySelectorAll('[data-count-to]');
+
+    const animateCount = (el) => {
+      const to = parseFloat(el.dataset.countTo);
+      const decimals = parseInt(el.dataset.countDecimals || '0', 10);
+      const suffix = el.dataset.countSuffix || '';
+      const pad = el.dataset.countPad === 'true';
+      const duration = 1400;
+      const start = performance.now();
+
+      const format = (value) => {
+        const text = value.toFixed(decimals);
+        return (pad && value < 10 ? '0' + text : text) + suffix;
+      };
+
+      const step = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        el.textContent = format(to * (1 - Math.pow(1 - progress, 3)));
+        if (progress < 1) requestAnimationFrame(step);
+      };
+
+      requestAnimationFrame(step);
+    };
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      countTargets.forEach((el) => {
+        el.textContent = el.dataset.countFinal;
+      });
+    } else {
+      const countObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCount(entry.target);
+            countObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      countTargets.forEach((el) => countObserver.observe(el));
+    }
+  </script>
 </body>
 </html>
