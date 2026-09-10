@@ -69,219 +69,249 @@
           <p class="mt-4 text-xs text-slate-400">No implementation marathon. Connect your systems and start seeing your trust posture.</p>
         </div>
 
-        <!-- TRUST DASHBOARD -->
+        <!-- TRUST GRAPH — SINGLE PANE -->
         <div class="reveal relative mx-auto mt-16 max-w-6xl">
           <div class="absolute -inset-8 rounded-[2rem] bg-gradient-to-r from-cyan-200/30 via-white to-violet-200/30 blur-2xl"></div>
           <div class="relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_30px_100px_rgba(15,23,42,.12)]">
-            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 px-5 py-4">
-              <div class="flex items-center gap-3">
-                <div class="grid h-8 w-8 place-items-center rounded-lg bg-slate-950 text-xs font-bold text-white">T</div>
-                <div>
-                  <p class="text-sm font-semibold leading-none">Trust Dashboard</p>
-                  <p class="mt-1 text-[11px] text-slate-400">All workspaces · Updated 2 minutes ago</p>
-                </div>
+            <!-- top bar -->
+            <div class="flex flex-wrap items-center gap-3 border-b border-slate-200 px-5 py-3">
+              <div class="flex items-center gap-2.5">
+                <div class="grid h-7 w-7 place-items-center rounded-lg bg-slate-950 text-[11px] font-bold text-white">T</div>
+                <p class="text-sm font-semibold leading-none">Trust Graph</p>
               </div>
-              <div class="flex items-center gap-2 text-xs text-slate-500">
-                <span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span></span>
-                Trust posture: Healthy
+              <div class="flex items-center gap-1.5 text-[10px] font-medium">
+                <span class="rounded-full bg-slate-900 px-2 py-1 text-white">UAE</span>
+                <span class="rounded-full bg-slate-100 px-2 py-1 text-slate-500">KSA</span>
+                <span class="rounded-full bg-slate-100 px-2 py-1 text-slate-500">EU</span>
+              </div>
+              <div class="ml-auto flex items-center gap-4 text-[11px] text-slate-400">
+                <span class="hidden sm:inline">Recalculated 12s ago</span>
+                <span class="inline-flex items-center gap-1.5 text-slate-600"><span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span></span>Streaming</span>
               </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-[200px_1fr]">
-              <aside class="hidden border-r border-slate-200 bg-slate-50/70 p-4 lg:block">
-                <div class="space-y-1 text-sm">
-                  <div class="rounded-lg bg-slate-900 px-3 py-2 text-white">Overview</div>
-                  <div class="px-3 py-2 text-slate-500">Controls</div>
-                  <div class="px-3 py-2 text-slate-500">Evidence</div>
-                  <div class="px-3 py-2 text-slate-500">Regulations</div>
-                  <div class="px-3 py-2 text-slate-500">Vendors</div>
-                  <div class="px-3 py-2 text-slate-500">Risk</div>
-                  <div class="px-3 py-2 text-slate-500">Trust Center</div>
-                  <div class="px-3 py-2 text-slate-500">Agents</div>
-                </div>
-                <div class="mt-6 rounded-xl border border-slate-200 bg-white p-3">
-                  <p class="text-[11px] font-medium text-slate-400">Trust score</p>
-                  <p class="mt-1 text-2xl font-semibold" data-count-to="94.8" data-count-decimals="1" data-count-suffix="%" data-count-final="94.8%">94.8%</p>
-                  <p class="mt-1 text-[11px] text-emerald-600">↑ 4.2% this month</p>
-                </div>
-              </aside>
-
-              <div class="space-y-4 p-4 sm:p-5">
-                <!-- COMPLIANCE OVERVIEW -->
-                <div class="rounded-xl border border-slate-200">
-                  <div class="flex items-center justify-between border-b border-slate-100 px-4 py-3">
-                    <p class="text-sm font-semibold">Compliance overview</p>
-                    <span class="text-[11px] text-slate-400">3 of 11 frameworks</span>
-                  </div>
-                  <div class="grid gap-3 p-4 sm:grid-cols-3">
-                    <div class="rounded-lg border border-slate-200 p-3">
-                      <div class="flex items-center justify-between">
-                        <span class="text-xs font-semibold">UAE IA</span>
-                        <span class="text-xs font-semibold text-emerald-600">92%</span>
-                      </div>
-                      <div class="mt-2 h-1.5 w-full rounded-full bg-slate-100"><div class="h-1.5 rounded-full bg-emerald-500" style="width:92%"></div></div>
-                      <dl class="mt-3 space-y-1 text-[11px] text-slate-500">
-                        <div class="flex justify-between"><dt>Ready requirements</dt><dd class="font-medium text-slate-700">118</dd></div>
-                        <div class="flex justify-between"><dt>Controls</dt><dd class="font-medium text-slate-700">96</dd></div>
-                      </dl>
-                    </div>
-                    <div class="rounded-lg border border-slate-200 p-3">
-                      <div class="flex items-center justify-between">
-                        <span class="text-xs font-semibold">ISO 27001</span>
-                        <span class="text-xs font-semibold text-emerald-600">100%</span>
-                      </div>
-                      <div class="mt-2 h-1.5 w-full rounded-full bg-slate-100"><div class="h-1.5 rounded-full bg-emerald-500" style="width:100%"></div></div>
-                      <dl class="mt-3 space-y-1 text-[11px] text-slate-500">
-                        <div class="flex justify-between"><dt>Ready requirements</dt><dd class="font-medium text-slate-700">117</dd></div>
-                        <div class="flex justify-between"><dt>Controls</dt><dd class="font-medium text-slate-700">83</dd></div>
-                      </dl>
-                    </div>
-                    <div class="rounded-lg border border-slate-200 p-3">
-                      <div class="flex items-center justify-between">
-                        <span class="text-xs font-semibold">SOC 2</span>
-                        <span class="text-xs font-semibold text-amber-600">79%</span>
-                      </div>
-                      <div class="mt-2 h-1.5 w-full rounded-full bg-slate-100"><div class="h-1.5 rounded-full bg-amber-500" style="width:79%"></div></div>
-                      <dl class="mt-3 space-y-1 text-[11px] text-slate-500">
-                        <div class="flex justify-between"><dt>Ready requirements</dt><dd class="font-medium text-slate-700">31</dd></div>
-                        <div class="flex justify-between"><dt>Controls</dt><dd class="font-medium text-slate-700">30</dd></div>
-                      </dl>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="grid gap-4 lg:grid-cols-[1.15fr_1fr]">
-                  <!-- CONTROL MONITORING -->
-                  <div class="rounded-xl border border-slate-200 p-4">
-                    <p class="text-sm font-semibold">Control monitoring</p>
-                    <p class="mt-3 text-[11px] uppercase tracking-wider text-slate-400">Failing control tests</p>
-                    <div class="flex items-end gap-3">
-                      <p class="text-3xl font-semibold" data-count-to="12" data-count-final="12">12</p>
-                      <span class="mb-1 text-[11px] font-medium text-emerald-600">↓ 8% last 7 days</span>
-                    </div>
-                    <div class="mt-4 space-y-2 text-xs">
-                      <div class="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2"><span class="text-slate-600">Cloud infrastructure</span><span class="flex items-center gap-2"><span class="font-medium">2</span><span class="rounded-full bg-rose-50 px-1.5 py-0.5 text-[10px] font-medium text-rose-600">↑ 3%</span></span></div>
-                      <div class="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2"><span class="text-slate-600">Identity &amp; access</span><span class="flex items-center gap-2"><span class="font-medium">3</span><span class="rounded-full bg-emerald-50 px-1.5 py-0.5 text-[10px] font-medium text-emerald-600">↓ 8%</span></span></div>
-                      <div class="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2"><span class="text-slate-600">Data protection</span><span class="flex items-center gap-2"><span class="font-medium">4</span><span class="rounded-full bg-emerald-50 px-1.5 py-0.5 text-[10px] font-medium text-emerald-600">↓ 2%</span></span></div>
-                      <div class="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2"><span class="text-slate-600">AI systems</span><span class="flex items-center gap-2"><span class="font-medium">1</span><span class="rounded-full bg-rose-50 px-1.5 py-0.5 text-[10px] font-medium text-rose-600">↑ 1%</span></span></div>
-                      <div class="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2"><span class="text-slate-600">Vendor management</span><span class="flex items-center gap-2"><span class="font-medium">2</span><span class="rounded-full bg-emerald-50 px-1.5 py-0.5 text-[10px] font-medium text-emerald-600">↓ 4%</span></span></div>
-                    </div>
-                  </div>
-
-                  <div class="space-y-4">
-                    <!-- DONUTS -->
-                    <div class="grid gap-4 sm:grid-cols-2">
-                      <div class="rounded-xl border border-slate-200 p-4 text-center">
-                        <p class="text-left text-sm font-semibold">Policies</p>
-                        <svg viewBox="0 0 42 42" class="mx-auto mt-3 h-28 w-28 -rotate-90">
-                          <circle cx="21" cy="21" r="15.9" fill="none" stroke="#f1f5f9" stroke-width="5"></circle>
-                          <circle cx="21" cy="21" r="15.9" fill="none" stroke="#0e7490" stroke-width="5" stroke-dasharray="35 65" stroke-dashoffset="0"></circle>
-                          <circle cx="21" cy="21" r="15.9" fill="none" stroke="#f59e0b" stroke-width="5" stroke-dasharray="30 70" stroke-dashoffset="-35"></circle>
-                          <circle cx="21" cy="21" r="15.9" fill="none" stroke="#6366f1" stroke-width="5" stroke-dasharray="30 70" stroke-dashoffset="-65"></circle>
-                          <circle cx="21" cy="21" r="15.9" fill="none" stroke="#e11d48" stroke-width="5" stroke-dasharray="5 95" stroke-dashoffset="-95"></circle>
-                        </svg>
-                        <p class="-mt-[4.6rem] text-2xl font-semibold">40</p>
-                        <p class="mb-8 text-[11px] text-slate-400">Policies</p>
-                        <div class="mt-4 space-y-1 text-left text-[11px] text-slate-500">
-                          <div class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-cyan-700"></span>Published <span class="ml-auto font-medium text-slate-700">14</span></div>
-                          <div class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>Needs approval <span class="ml-auto font-medium text-slate-700">12</span></div>
-                          <div class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-indigo-500"></span>Approved <span class="ml-auto font-medium text-slate-700">12</span></div>
-                          <div class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-rose-600"></span>New <span class="ml-auto font-medium text-slate-700">2</span></div>
-                        </div>
-                      </div>
-                      <div class="rounded-xl border border-slate-200 p-4 text-center">
-                        <p class="text-left text-sm font-semibold">Vendor risk</p>
-                        <svg viewBox="0 0 42 42" class="mx-auto mt-3 h-28 w-28 -rotate-90">
-                          <circle cx="21" cy="21" r="15.9" fill="none" stroke="#f1f5f9" stroke-width="5"></circle>
-                          <circle cx="21" cy="21" r="15.9" fill="none" stroke="#10b981" stroke-width="5" stroke-dasharray="30 70" stroke-dashoffset="0"></circle>
-                          <circle cx="21" cy="21" r="15.9" fill="none" stroke="#f59e0b" stroke-width="5" stroke-dasharray="30 70" stroke-dashoffset="-30"></circle>
-                          <circle cx="21" cy="21" r="15.9" fill="none" stroke="#e11d48" stroke-width="5" stroke-dasharray="30 70" stroke-dashoffset="-60"></circle>
-                          <circle cx="21" cy="21" r="15.9" fill="none" stroke="#94a3b8" stroke-width="5" stroke-dasharray="10 90" stroke-dashoffset="-90"></circle>
-                        </svg>
-                        <p class="-mt-[4.6rem] text-2xl font-semibold">10</p>
-                        <p class="mb-8 text-[11px] text-slate-400">Risks</p>
-                        <div class="mt-4 space-y-1 text-left text-[11px] text-slate-500">
-                          <div class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>Low <span class="ml-auto font-medium text-slate-700">3</span></div>
-                          <div class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>Moderate <span class="ml-auto font-medium text-slate-700">3</span></div>
-                          <div class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-rose-600"></span>High <span class="ml-auto font-medium text-slate-700">3</span></div>
-                          <div class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-slate-400"></span>None <span class="ml-auto font-medium text-slate-700">1</span></div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- MINI STATS -->
-                    <div class="grid gap-4 sm:grid-cols-2">
-                      <div class="rounded-xl border border-slate-200 p-4">
-                        <p class="text-xs text-slate-500">Connection errors</p>
-                        <p class="mt-2 text-2xl font-semibold" data-count-to="0" data-count-final="0">0</p>
-                        <p class="mt-1 text-[11px] text-slate-400">Out of 83 systems</p>
-                      </div>
-                      <div class="rounded-xl border border-slate-200 p-4">
-                        <p class="text-xs text-slate-500">Personnel noncompliant</p>
-                        <p class="mt-2 text-2xl font-semibold" data-count-to="47" data-count-final="47">47</p>
-                        <p class="mt-1 text-[11px] text-slate-400">Out of 1,839</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="grid gap-4 lg:grid-cols-2">
-                  <!-- AUDIT TIMELINE -->
-                  <div class="rounded-xl border border-slate-200 p-4">
-                    <div class="flex items-center justify-between">
-                      <p class="text-sm font-semibold">Audit timeline</p>
-                      <span class="text-[11px] text-slate-400">View all</span>
-                    </div>
-                    <div class="mt-4 space-y-3 text-xs">
-                      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-                        <div><p class="text-[10px] uppercase tracking-wider text-slate-400">Active audit</p><p class="mt-0.5 font-medium">ISO 27001 surveillance</p></div>
-                        <span class="rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-medium text-amber-700">28 open</span>
-                      </div>
-                      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-                        <div><p class="text-[10px] uppercase tracking-wider text-slate-400">Active audit</p><p class="mt-0.5 font-medium">UAE IA Standard v2</p></div>
-                        <span class="rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-medium text-amber-700">39 open</span>
-                      </div>
-                      <div class="flex items-center justify-between">
-                        <div><p class="text-[10px] uppercase tracking-wider text-slate-400">Upcoming</p><p class="mt-0.5 font-medium">SOC 2 Type 2</p></div>
-                        <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-600">Starts Mar 4</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- TASK FORECAST -->
-                  <div class="rounded-xl border border-slate-200 p-4">
-                    <p class="text-sm font-semibold">Task forecast</p>
-                    <div class="mt-4 space-y-2">
-                      <div class="flex items-center gap-3 text-[11px] text-slate-500"><span class="w-7">Jan</span><div class="h-3 flex-1 rounded bg-slate-100"><div class="h-3 rounded bg-slate-900" style="width:62%"></div></div></div>
-                      <div class="flex items-center gap-3 text-[11px] text-slate-500"><span class="w-7">Feb</span><div class="h-3 flex-1 rounded bg-slate-100"><div class="h-3 rounded bg-slate-900" style="width:85%"></div></div></div>
-                      <div class="flex items-center gap-3 text-[11px] text-slate-500"><span class="w-7">Mar</span><div class="h-3 flex-1 rounded bg-slate-100"><div class="h-3 rounded bg-slate-700" style="width:40%"></div></div></div>
-                      <div class="flex items-center gap-3 text-[11px] text-slate-500"><span class="w-7">Apr</span><div class="h-3 flex-1 rounded bg-slate-100"><div class="h-3 rounded bg-slate-500" style="width:55%"></div></div></div>
-                    </div>
-                    <p class="mt-4 text-[11px] uppercase tracking-wider text-slate-400">Upcoming tasks</p>
-                    <div class="mt-2 space-y-2 text-xs">
-                      <div class="flex items-center gap-2"><span class="rounded-full bg-rose-50 px-2 py-0.5 text-[10px] font-medium text-rose-600">Overdue 5d</span><span class="text-slate-600">Access review — production</span></div>
-                      <div class="flex items-center gap-2"><span class="rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-medium text-amber-700">Due in 3d</span><span class="text-slate-600">Update AI vendor risk criteria</span></div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- AGENT ACTIVITY -->
-                <div class="rounded-xl border border-slate-200 p-4">
-                  <div class="flex items-center justify-between">
+            <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr_260px]">
+              <!-- posture -->
+              <div class="border-b border-slate-200 p-5 lg:border-b-0 lg:border-r">
+                <div class="relative mx-auto w-fit">
+                  <svg viewBox="0 0 140 140" class="h-36 w-36 -rotate-90">
+                    <circle cx="70" cy="70" r="54" fill="none" stroke="#f1f5f9" stroke-width="12"></circle>
+                    <circle cx="70" cy="70" r="54" fill="none" stroke="url(#postureGrad)" stroke-width="12" stroke-linecap="round" class="ring-progress"></circle>
+                    <defs>
+                      <linearGradient id="postureGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#06b6d4"></stop>
+                        <stop offset="100%" stop-color="#8b5cf6"></stop>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <div class="absolute inset-0 grid place-items-center text-center">
                     <div>
-                      <p class="text-sm font-semibold">Agent activity</p>
-                      <p class="mt-1 text-xs text-slate-500">Truvia is continuously working in the background.</p>
+                      <p class="text-3xl font-semibold tracking-tight" data-count-to="94.8" data-count-decimals="1" data-count-suffix="" data-count-final="94.8">94.8</p>
+                      <p class="text-[10px] uppercase tracking-[.18em] text-slate-400">Trust index</p>
                     </div>
-                    <span class="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-semibold text-slate-600"><span class="h-1.5 w-1.5 animate-pulse rounded-full bg-rose-500"></span>LIVE</span>
                   </div>
-                  <div class="mt-4 space-y-3 text-xs">
-                    <div class="flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="font-medium">Regulatory Agent</span><span class="ml-auto text-slate-400">Reviewed UAE PDPL update</span></div>
-                    <div class="flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-blue-500"></span><span class="font-medium">Evidence Agent</span><span class="ml-auto text-slate-400">Collected 14 artifacts</span></div>
-                    <div class="flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-violet-500"></span><span class="font-medium">Risk Agent</span><span class="ml-auto text-slate-400">Flagged vendor exposure</span></div>
-                    <div class="flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-amber-500"></span><span class="font-medium">Control Agent</span><span class="ml-auto text-slate-400">Requested remediation</span></div>
+                </div>
+                <p class="mt-3 text-center text-[11px] font-medium text-emerald-600">↑ 4.2 pts this month</p>
+
+                <div class="mt-6 space-y-3 text-[11px]">
+                  <div>
+                    <div class="flex justify-between text-slate-500"><span>Obligation coverage</span><span class="font-semibold text-slate-800">98%</span></div>
+                    <div class="mt-1 h-1 rounded-full bg-slate-100"><div class="h-1 rounded-full bg-slate-900" style="width:98%"></div></div>
+                  </div>
+                  <div>
+                    <div class="flex justify-between text-slate-500"><span>Control health</span><span class="font-semibold text-slate-800">91%</span></div>
+                    <div class="mt-1 h-1 rounded-full bg-slate-100"><div class="h-1 rounded-full bg-slate-900" style="width:91%"></div></div>
+                  </div>
+                  <div>
+                    <div class="flex justify-between text-slate-500"><span>Evidence freshness</span><span class="font-semibold text-slate-800">96%</span></div>
+                    <div class="mt-1 h-1 rounded-full bg-slate-100"><div class="h-1 rounded-full bg-slate-900" style="width:96%"></div></div>
+                  </div>
+                  <div>
+                    <div class="flex justify-between text-slate-500"><span>Autonomy level</span><span class="font-semibold text-slate-800">L3 · supervised</span></div>
+                    <div class="mt-1 h-1 rounded-full bg-slate-100"><div class="h-1 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500" style="width:74%"></div></div>
                   </div>
                 </div>
               </div>
+
+              <!-- graph -->
+              <div class="border-b border-slate-200 p-4 sm:p-5 lg:border-b-0 lg:border-r">
+                <div class="flex items-baseline justify-between">
+                  <p class="text-xs font-semibold">Obligation → evidence lineage</p>
+                  <p class="text-[10px] text-slate-400">2,481 live edges</p>
+                </div>
+                <svg viewBox="0 0 660 300" class="mt-3 w-full" role="img" aria-label="Truvia trust graph linking obligations to controls, systems and evidence">
+                  <g font-family="Inter, sans-serif">
+                    <text x="18" y="12" font-size="9" fill="#94a3b8" letter-spacing="1.2">OBLIGATIONS</text>
+                    <text x="188" y="12" font-size="9" fill="#94a3b8" letter-spacing="1.2">CONTROLS</text>
+                    <text x="358" y="12" font-size="9" fill="#94a3b8" letter-spacing="1.2">SYSTEMS</text>
+                    <text x="528" y="12" font-size="9" fill="#94a3b8" letter-spacing="1.2">EVIDENCE</text>
+
+                    <!-- edges -->
+                    <g fill="none" stroke-width="1.4">
+                      <path d="M148 48 C168 48 168 78 188 78" stroke="#cbd5e1" class="flow-line"></path>
+                      <path d="M148 48 C168 48 168 138 188 138" stroke="#f59e0b" class="flow-line"></path>
+                      <path d="M148 108 C168 108 168 78 188 78" stroke="#cbd5e1" class="flow-line"></path>
+                      <path d="M148 168 C168 168 168 198 188 198" stroke="#cbd5e1" class="flow-line"></path>
+                      <path d="M148 228 C168 228 168 258 188 258" stroke="#cbd5e1" class="flow-line"></path>
+                      <path d="M318 78 C338 78 338 48 358 48" stroke="#cbd5e1" class="flow-line"></path>
+                      <path d="M318 138 C338 138 338 108 358 108" stroke="#cbd5e1" class="flow-line"></path>
+                      <path d="M318 198 C338 198 338 168 358 168" stroke="#e11d48" class="flow-line"></path>
+                      <path d="M318 258 C338 258 338 228 358 228" stroke="#cbd5e1" class="flow-line"></path>
+                      <path d="M488 48 C508 48 508 48 528 48" stroke="#cbd5e1" class="flow-line"></path>
+                      <path d="M488 108 C508 108 508 108 528 108" stroke="#cbd5e1" class="flow-line"></path>
+                      <path d="M488 168 C508 168 508 168 528 168" stroke="#cbd5e1" class="flow-line"></path>
+                      <path d="M488 228 C508 228 508 228 528 228" stroke="#cbd5e1" class="flow-line"></path>
+                    </g>
+
+                    <!-- obligations -->
+                    <g>
+                      <rect x="18" y="28" width="130" height="40" rx="10" fill="#ffffff" stroke="#fcd34d" stroke-width="1.5"></rect>
+                      <circle cx="34" cy="48" r="3.5" fill="#f59e0b"></circle>
+                      <text x="46" y="45" font-size="11" fill="#0f172a" font-weight="600">UAE PDPL</text>
+                      <text x="46" y="57" font-size="8.5" fill="#f59e0b">amended 2d ago</text>
+
+                      <rect x="18" y="88" width="130" height="40" rx="10" fill="#ffffff" stroke="#e2e8f0"></rect>
+                      <circle cx="34" cy="108" r="3.5" fill="#10b981"></circle>
+                      <text x="46" y="105" font-size="11" fill="#0f172a" font-weight="600">UAE IA v2</text>
+                      <text x="46" y="117" font-size="8.5" fill="#94a3b8">118 requirements</text>
+
+                      <rect x="18" y="148" width="130" height="40" rx="10" fill="#ffffff" stroke="#e2e8f0"></rect>
+                      <circle cx="34" cy="168" r="3.5" fill="#10b981"></circle>
+                      <text x="46" y="165" font-size="11" fill="#0f172a" font-weight="600">ISO 27001</text>
+                      <text x="46" y="177" font-size="8.5" fill="#94a3b8">fully mapped</text>
+
+                      <rect x="18" y="208" width="130" height="40" rx="10" fill="#ffffff" stroke="#e2e8f0"></rect>
+                      <circle cx="34" cy="228" r="3.5" fill="#6366f1"></circle>
+                      <text x="46" y="225" font-size="11" fill="#0f172a" font-weight="600">EU AI Act</text>
+                      <text x="46" y="237" font-size="8.5" fill="#94a3b8">horizon scan</text>
+                    </g>
+
+                    <!-- controls -->
+                    <g>
+                      <rect x="188" y="58" width="130" height="40" rx="10" fill="#ffffff" stroke="#e2e8f0"></rect>
+                      <text x="202" y="76" font-size="11" fill="#0f172a" font-weight="600">Access control</text>
+                      <text x="202" y="88" font-size="8.5" fill="#10b981">tested 4m ago</text>
+
+                      <rect x="188" y="118" width="130" height="40" rx="10" fill="#ffffff" stroke="#e2e8f0"></rect>
+                      <text x="202" y="136" font-size="11" fill="#0f172a" font-weight="600">Data residency</text>
+                      <text x="202" y="148" font-size="8.5" fill="#f59e0b">re-mapping</text>
+
+                      <rect x="188" y="178" width="130" height="40" rx="10" fill="#fff1f2" stroke="#fda4af" stroke-width="1.5"></rect>
+                      <text x="202" y="196" font-size="11" fill="#0f172a" font-weight="600">Vendor due diligence</text>
+                      <text x="202" y="208" font-size="8.5" fill="#e11d48">2 tests failing</text>
+
+                      <rect x="188" y="238" width="130" height="40" rx="10" fill="#ffffff" stroke="#e2e8f0"></rect>
+                      <text x="202" y="256" font-size="11" fill="#0f172a" font-weight="600">AI oversight</text>
+                      <text x="202" y="268" font-size="8.5" fill="#94a3b8">draft control</text>
+                    </g>
+
+                    <!-- systems -->
+                    <g>
+                      <rect x="358" y="28" width="130" height="40" rx="10" fill="#ffffff" stroke="#e2e8f0"></rect>
+                      <text x="372" y="46" font-size="11" fill="#0f172a" font-weight="600">Okta</text>
+                      <text x="372" y="58" font-size="8.5" fill="#94a3b8">1,839 identities</text>
+
+                      <rect x="358" y="88" width="130" height="40" rx="10" fill="#ffffff" stroke="#e2e8f0"></rect>
+                      <text x="372" y="106" font-size="11" fill="#0f172a" font-weight="600">AWS me-central-1</text>
+                      <text x="372" y="118" font-size="8.5" fill="#94a3b8">312 resources</text>
+
+                      <rect x="358" y="148" width="130" height="40" rx="10" fill="#ffffff" stroke="#e2e8f0"></rect>
+                      <text x="372" y="166" font-size="11" fill="#0f172a" font-weight="600">Vendor registry</text>
+                      <text x="372" y="178" font-size="8.5" fill="#e11d48">1 vendor flagged</text>
+
+                      <rect x="358" y="208" width="130" height="40" rx="10" fill="#ffffff" stroke="#e2e8f0"></rect>
+                      <text x="372" y="226" font-size="11" fill="#0f172a" font-weight="600">Model registry</text>
+                      <text x="372" y="238" font-size="8.5" fill="#94a3b8">9 AI systems</text>
+                    </g>
+
+                    <!-- evidence -->
+                    <g>
+                      <rect x="528" y="28" width="114" height="40" rx="10" fill="#f8fafc" stroke="#e2e8f0"></rect>
+                      <text x="540" y="46" font-size="10.5" fill="#0f172a" font-weight="600">Access review</text>
+                      <text x="540" y="58" font-size="8.5" fill="#10b981">fresh · 4m</text>
+
+                      <rect x="528" y="88" width="114" height="40" rx="10" fill="#f8fafc" stroke="#e2e8f0"></rect>
+                      <text x="540" y="106" font-size="10.5" fill="#0f172a" font-weight="600">Config export</text>
+                      <text x="540" y="118" font-size="8.5" fill="#10b981">fresh · 1h</text>
+
+                      <rect x="528" y="148" width="114" height="40" rx="10" fill="#f8fafc" stroke="#e2e8f0"></rect>
+                      <text x="540" y="166" font-size="10.5" fill="#0f172a" font-weight="600">Vendor DPA</text>
+                      <text x="540" y="178" font-size="8.5" fill="#f59e0b">stale · 94d</text>
+
+                      <rect x="528" y="208" width="114" height="40" rx="10" fill="#f8fafc" stroke="#e2e8f0"></rect>
+                      <text x="540" y="226" font-size="10.5" fill="#0f172a" font-weight="600">Model card</text>
+                      <text x="540" y="238" font-size="8.5" fill="#10b981">fresh · 2d</text>
+                    </g>
+                  </g>
+                </svg>
+
+                <!-- drift ticker -->
+                <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-xl bg-slate-50 px-4 py-3 text-[11px]">
+                  <span class="font-semibold text-slate-700">Blast radius</span>
+                  <span class="text-slate-500">PDPL amendment touches <span class="font-semibold text-slate-800">12 controls</span>, <span class="font-semibold text-slate-800">4 systems</span>, <span class="font-semibold text-slate-800">31 evidence items</span></span>
+                  <span class="ml-auto rounded-full bg-white px-2 py-1 font-medium text-slate-600 ring-1 ring-slate-200">Simulate change</span>
+                </div>
+              </div>
+
+              <!-- agent stream + approvals -->
+              <div class="p-4 sm:p-5">
+                <div class="flex items-center justify-between">
+                  <p class="text-xs font-semibold">Agent stream</p>
+                  <span class="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2 py-0.5 text-[9px] font-semibold text-slate-600"><span class="h-1.5 w-1.5 animate-pulse rounded-full bg-rose-500"></span>LIVE</span>
+                </div>
+                <div class="mt-3 space-y-3 border-l border-slate-200 pl-4 text-[11px]">
+                  <div class="relative">
+                    <span class="absolute -left-[21px] top-1 h-2 w-2 rounded-full bg-emerald-500 ring-4 ring-white"></span>
+                    <p class="font-semibold text-slate-800">Regulatory Agent <span class="font-normal text-slate-400">· 2m</span></p>
+                    <p class="mt-0.5 text-slate-500">Parsed PDPL amendment, re-mapped 12 controls.</p>
+                  </div>
+                  <div class="relative">
+                    <span class="absolute -left-[21px] top-1 h-2 w-2 rounded-full bg-blue-500 ring-4 ring-white"></span>
+                    <p class="font-semibold text-slate-800">Evidence Agent <span class="font-normal text-slate-400">· 6m</span></p>
+                    <p class="mt-0.5 text-slate-500">Refreshed 31 artifacts from AWS and Okta.</p>
+                  </div>
+                  <div class="relative">
+                    <span class="absolute -left-[21px] top-1 h-2 w-2 rounded-full bg-rose-500 ring-4 ring-white"></span>
+                    <p class="font-semibold text-slate-800">Risk Agent <span class="font-normal text-slate-400">· 14m</span></p>
+                    <p class="mt-0.5 text-slate-500">Vendor exposure rose to High after SOC 2 lapse.</p>
+                  </div>
+                  <div class="relative">
+                    <span class="absolute -left-[21px] top-1 h-2 w-2 rounded-full bg-violet-500 ring-4 ring-white"></span>
+                    <p class="font-semibold text-slate-800">Control Agent <span class="font-normal text-slate-400">· 22m</span></p>
+                    <p class="mt-0.5 text-slate-500">Opened remediation for 2 failing tests.</p>
+                  </div>
+                </div>
+
+                <div class="mt-5 rounded-xl border border-slate-200 p-3">
+                  <div class="flex items-center justify-between">
+                    <p class="text-xs font-semibold">Needs a human</p>
+                    <span class="rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-semibold text-amber-700">3</span>
+                  </div>
+                  <div class="mt-3 space-y-2 text-[11px]">
+                    <div class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-rose-500"></span><span class="text-slate-600">Approve vendor offboarding — <span class="font-medium text-slate-800">Nimbus Ltd</span></span></div>
+                    <div class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500"></span><span class="text-slate-600">Sign off re-mapped PDPL controls</span></div>
+                    <div class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400"></span><span class="text-slate-600">Publish AI oversight policy v2</span></div>
+                  </div>
+                </div>
+
+                <div class="mt-4 grid grid-cols-2 gap-3 text-center">
+                  <div class="rounded-xl border border-slate-200 p-3">
+                    <p class="text-lg font-semibold" data-count-to="428" data-count-final="428">428</p>
+                    <p class="text-[10px] text-slate-400">Controls live</p>
+                  </div>
+                  <div class="rounded-xl border border-slate-200 p-3">
+                    <p class="text-lg font-semibold" data-count-to="7" data-count-pad="true" data-count-final="07">07</p>
+                    <p class="text-[10px] text-slate-400">Open risks</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-x-6 gap-y-1 border-t border-slate-200 px-5 py-2.5 text-[10px] text-slate-400">
+              <span>83 systems connected</span>
+              <span>0 connection errors</span>
+              <span>Next audit window: 24 Mar</span>
+              <span class="ml-auto">Every action logged and reversible</span>
             </div>
           </div>
         </div>
