@@ -84,6 +84,82 @@
     stroke-dashoffset: 339.3;
     animation: ring 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
   }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tg-ring {
+    transition: stroke-dashoffset 1s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .tg-fill {
+    transition: width 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .tg-node {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .tg-node rect {
+    transition:
+      stroke 0.3s ease,
+      fill 0.3s ease;
+  }
+
+  .tg-node.is-focus rect {
+    stroke: #0f172a;
+    stroke-width: 2;
+  }
+
+  .tg-node.is-focus {
+    animation: tgPulse 1.7s ease-in-out infinite;
+  }
+
+  .tg-edge {
+    stroke-dasharray: 4 8;
+    animation: flow 2.2s linear infinite;
+    transition:
+      stroke 0.3s ease,
+      stroke-width 0.3s ease;
+  }
+
+  .tg-edge.is-active {
+    stroke: #0f172a;
+    stroke-width: 2;
+    animation-duration: 0.85s;
+  }
+
+  .tg-fade {
+    opacity: 0;
+    transform: translateY(5px);
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .tg-fade.is-on {
+    opacity: 1;
+    transform: none;
+  }
+
+  .tg-dot {
+    transition:
+      width 0.4s ease,
+      background-color 0.4s ease;
+  }
+
+  .clamp-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
 }
 
 @keyframes fadeUp {
@@ -128,13 +204,31 @@
   }
 }
 
+@keyframes tgPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.035);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .fade-up,
   .marquee,
   .orb-float,
   .orb-float-slow,
-  .flow-line {
+  .flow-line,
+  .tg-edge,
+  .tg-node.is-focus {
     animation: none;
+  }
+
+  .tg-fade {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 
   .ring-progress {

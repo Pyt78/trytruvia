@@ -68,20 +68,16 @@
         <!-- TRUST GRAPH — SINGLE PANE -->
         <div class="reveal relative mx-auto mt-6 max-w-6xl">
           <div class="absolute -inset-8 rounded-[2rem] bg-gradient-to-r from-cyan-200/30 via-white to-violet-200/30 blur-2xl"></div>
-          <div class="relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_30px_100px_rgba(15,23,42,.12)]">
+          <div id="trust-graph" class="relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_30px_100px_rgba(15,23,42,.12)]">
             <!-- top bar -->
-            <div class="flex flex-wrap items-center gap-3 border-b border-slate-200 px-5 py-2.5">
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-2 border-b border-slate-200 px-5 py-2.5">
               <div class="flex items-center gap-2.5">
                 <div class="grid h-7 w-7 place-items-center rounded-lg bg-slate-950 text-[11px] font-bold text-white">T</div>
                 <p class="text-sm font-semibold leading-none">Trust Graph</p>
               </div>
-              <div class="flex items-center gap-1.5 text-[10px] font-medium">
-                <span class="rounded-full bg-slate-900 px-2 py-1 text-white">UAE</span>
-                <span class="rounded-full bg-slate-100 px-2 py-1 text-slate-500">KSA</span>
-                <span class="rounded-full bg-slate-100 px-2 py-1 text-slate-500">EU</span>
-              </div>
-              <div class="ml-auto flex items-center gap-4 text-[11px] text-slate-400">
-                <span class="hidden sm:inline">Recalculated 12s ago</span>
+              <div id="tg-tabs" class="scrollbar-none flex items-center gap-1 overflow-x-auto text-[10px] font-medium" role="tablist" aria-label="Framework"></div>
+              <div class="ml-auto flex items-center gap-3 text-[11px] text-slate-400">
+                <span id="tg-scope" class="hidden lg:inline">Scope: UAE</span>
                 <span class="inline-flex items-center gap-1.5 text-slate-600"><span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span></span>Streaming</span>
               </div>
             </div>
@@ -92,7 +88,7 @@
                 <div class="relative mx-auto w-fit">
                   <svg viewBox="0 0 140 140" class="h-28 w-28 -rotate-90">
                     <circle cx="70" cy="70" r="54" fill="none" stroke="#f1f5f9" stroke-width="12"></circle>
-                    <circle cx="70" cy="70" r="54" fill="none" stroke="url(#postureGrad)" stroke-width="12" stroke-linecap="round" class="ring-progress"></circle>
+                    <circle id="tg-ring" cx="70" cy="70" r="54" fill="none" stroke="url(#postureGrad)" stroke-width="12" stroke-linecap="round" class="tg-ring" stroke-dasharray="339.3" stroke-dashoffset="339.3"></circle>
                     <defs>
                       <linearGradient id="postureGrad" x1="0" y1="0" x2="1" y2="1">
                         <stop offset="0%" stop-color="#06b6d4"></stop>
@@ -102,150 +98,28 @@
                   </svg>
                   <div class="absolute inset-0 grid place-items-center text-center">
                     <div>
-                      <p class="text-2xl font-semibold tracking-tight" data-count-to="94.8" data-count-decimals="1" data-count-suffix="" data-count-final="94.8">94.8</p>
+                      <p id="tg-index" class="text-2xl font-semibold tracking-tight">94.8</p>
                       <p class="text-[9px] uppercase tracking-[.14em] text-slate-400">Trust index</p>
                     </div>
                   </div>
                 </div>
-                <p class="mt-2 text-center text-[11px] font-medium text-emerald-600">↑ 4.2 pts this month</p>
-
-                <div class="mt-4 space-y-2.5 text-[11px]">
-                  <div>
-                    <div class="flex justify-between text-slate-500"><span>Obligation coverage</span><span class="font-semibold text-slate-800">98%</span></div>
-                    <div class="mt-1 h-1 rounded-full bg-slate-100"><div class="h-1 rounded-full bg-slate-900" style="width:98%"></div></div>
-                  </div>
-                  <div>
-                    <div class="flex justify-between text-slate-500"><span>Control health</span><span class="font-semibold text-slate-800">91%</span></div>
-                    <div class="mt-1 h-1 rounded-full bg-slate-100"><div class="h-1 rounded-full bg-slate-900" style="width:91%"></div></div>
-                  </div>
-                  <div>
-                    <div class="flex justify-between text-slate-500"><span>Evidence freshness</span><span class="font-semibold text-slate-800">96%</span></div>
-                    <div class="mt-1 h-1 rounded-full bg-slate-100"><div class="h-1 rounded-full bg-slate-900" style="width:96%"></div></div>
-                  </div>
-                  <div>
-                    <div class="flex justify-between text-slate-500"><span>Autonomy level</span><span class="font-semibold text-slate-800">L3 · supervised</span></div>
-                    <div class="mt-1 h-1 rounded-full bg-slate-100"><div class="h-1 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500" style="width:74%"></div></div>
-                  </div>
-                </div>
+                <p id="tg-delta" class="mt-2 text-center text-[11px] font-medium text-emerald-600">↑ 4.2 pts this month</p>
+                <div id="tg-bars" class="mt-4 space-y-2.5 text-[11px]"></div>
               </div>
 
               <!-- graph -->
               <div class="border-b border-slate-200 p-3.5 lg:border-b-0 lg:border-r">
-                <div class="flex items-baseline justify-between">
-                  <p class="text-xs font-semibold">Obligation → evidence lineage</p>
-                  <p class="text-[10px] text-slate-400">2,481 live edges</p>
+                <div class="flex items-baseline justify-between gap-3">
+                  <p class="truncate text-xs font-semibold"><span id="tg-fw">UAE IA v2</span> <span class="font-normal text-slate-400">· obligation → evidence lineage</span></p>
+                  <p id="tg-edges" class="shrink-0 text-[10px] text-slate-400">2,481 live edges</p>
                 </div>
-                <svg viewBox="0 0 660 176" class="mt-2 w-full" role="img" aria-label="Truvia trust graph linking obligations to controls, systems and evidence">
-                  <g font-family="Inter, sans-serif">
-                    <text x="18" y="8" font-size="8.5" fill="#94a3b8" letter-spacing="1.2">OBLIGATIONS</text>
-                    <text x="188" y="8" font-size="8.5" fill="#94a3b8" letter-spacing="1.2">CONTROLS</text>
-                    <text x="358" y="8" font-size="8.5" fill="#94a3b8" letter-spacing="1.2">SYSTEMS</text>
-                    <text x="528" y="8" font-size="8.5" fill="#94a3b8" letter-spacing="1.2">EVIDENCE</text>
+                <svg id="tg-svg" viewBox="0 0 660 176" class="mt-2 w-full" role="img" aria-label="Truvia trust graph linking obligations to controls, systems and evidence"></svg>
 
-                    <!-- edges -->
-                    <g fill="none" stroke-width="1.4">
-                      <path d="M148 33 C168 33 168 53 188 53" stroke="#cbd5e1" class="flow-line"></path>
-                      <path d="M148 33 C168 33 168 93 188 93" stroke="#f59e0b" class="flow-line"></path>
-                      <path d="M148 73 C168 73 168 53 188 53" stroke="#cbd5e1" class="flow-line"></path>
-                      <path d="M148 113 C168 113 168 133 188 133" stroke="#cbd5e1" class="flow-line"></path>
-                      <path d="M148 153 C168 153 168 173 188 173" stroke="#cbd5e1" class="flow-line"></path>
-                      <path d="M318 53 C338 53 338 33 358 33" stroke="#cbd5e1" class="flow-line"></path>
-                      <path d="M318 93 C338 93 338 73 358 73" stroke="#cbd5e1" class="flow-line"></path>
-                      <path d="M318 133 C338 133 338 113 358 113" stroke="#e11d48" class="flow-line"></path>
-                      <path d="M318 173 C338 173 338 153 358 153" stroke="#cbd5e1" class="flow-line"></path>
-                      <path d="M488 33 L528 33" stroke="#cbd5e1" class="flow-line"></path>
-                      <path d="M488 73 L528 73" stroke="#cbd5e1" class="flow-line"></path>
-                      <path d="M488 113 L528 113" stroke="#cbd5e1" class="flow-line"></path>
-                      <path d="M488 153 L528 153" stroke="#cbd5e1" class="flow-line"></path>
-                    </g>
-
-                    <!-- obligations -->
-                    <g>
-                      <rect x="18" y="18" width="130" height="30" rx="9" fill="#ffffff" stroke="#fcd34d" stroke-width="1.5"></rect>
-                      <circle cx="32" cy="33" r="3.2" fill="#f59e0b"></circle>
-                      <text x="43" y="31" font-size="10.5" fill="#0f172a" font-weight="600">UAE PDPL</text>
-                      <text x="43" y="42" font-size="8" fill="#f59e0b">amended 2d ago</text>
-
-                      <rect x="18" y="58" width="130" height="30" rx="9" fill="#ffffff" stroke="#e2e8f0"></rect>
-                      <circle cx="32" cy="73" r="3.2" fill="#10b981"></circle>
-                      <text x="43" y="71" font-size="10.5" fill="#0f172a" font-weight="600">UAE IA v2</text>
-                      <text x="43" y="82" font-size="8" fill="#94a3b8">118 requirements</text>
-
-                      <rect x="18" y="98" width="130" height="30" rx="9" fill="#ffffff" stroke="#e2e8f0"></rect>
-                      <circle cx="32" cy="113" r="3.2" fill="#10b981"></circle>
-                      <text x="43" y="111" font-size="10.5" fill="#0f172a" font-weight="600">ISO 27001</text>
-                      <text x="43" y="122" font-size="8" fill="#94a3b8">fully mapped</text>
-
-                      <rect x="18" y="138" width="130" height="30" rx="9" fill="#ffffff" stroke="#e2e8f0"></rect>
-                      <circle cx="32" cy="153" r="3.2" fill="#6366f1"></circle>
-                      <text x="43" y="151" font-size="10.5" fill="#0f172a" font-weight="600">EU AI Act</text>
-                      <text x="43" y="162" font-size="8" fill="#94a3b8">horizon scan</text>
-                    </g>
-
-                    <!-- controls -->
-                    <g>
-                      <rect x="188" y="38" width="130" height="30" rx="9" fill="#ffffff" stroke="#e2e8f0"></rect>
-                      <text x="200" y="51" font-size="10.5" fill="#0f172a" font-weight="600">Access control</text>
-                      <text x="200" y="62" font-size="8" fill="#10b981">tested 4m ago</text>
-
-                      <rect x="188" y="78" width="130" height="30" rx="9" fill="#ffffff" stroke="#e2e8f0"></rect>
-                      <text x="200" y="91" font-size="10.5" fill="#0f172a" font-weight="600">Data residency</text>
-                      <text x="200" y="102" font-size="8" fill="#f59e0b">re-mapping</text>
-
-                      <rect x="188" y="118" width="130" height="30" rx="9" fill="#fff1f2" stroke="#fda4af" stroke-width="1.5"></rect>
-                      <text x="200" y="131" font-size="10.5" fill="#0f172a" font-weight="600">Vendor diligence</text>
-                      <text x="200" y="142" font-size="8" fill="#e11d48">2 tests failing</text>
-
-                      <rect x="188" y="158" width="130" height="30" rx="9" fill="#ffffff" stroke="#e2e8f0"></rect>
-                      <text x="200" y="171" font-size="10.5" fill="#0f172a" font-weight="600">AI oversight</text>
-                      <text x="200" y="182" font-size="8" fill="#94a3b8">draft control</text>
-                    </g>
-
-                    <!-- systems -->
-                    <g>
-                      <rect x="358" y="18" width="130" height="30" rx="9" fill="#ffffff" stroke="#e2e8f0"></rect>
-                      <text x="370" y="31" font-size="10.5" fill="#0f172a" font-weight="600">Okta</text>
-                      <text x="370" y="42" font-size="8" fill="#94a3b8">1,839 identities</text>
-
-                      <rect x="358" y="58" width="130" height="30" rx="9" fill="#ffffff" stroke="#e2e8f0"></rect>
-                      <text x="370" y="71" font-size="10.5" fill="#0f172a" font-weight="600">AWS me-central-1</text>
-                      <text x="370" y="82" font-size="8" fill="#94a3b8">312 resources</text>
-
-                      <rect x="358" y="98" width="130" height="30" rx="9" fill="#ffffff" stroke="#e2e8f0"></rect>
-                      <text x="370" y="111" font-size="10.5" fill="#0f172a" font-weight="600">Vendor registry</text>
-                      <text x="370" y="122" font-size="8" fill="#e11d48">1 vendor flagged</text>
-
-                      <rect x="358" y="138" width="130" height="30" rx="9" fill="#ffffff" stroke="#e2e8f0"></rect>
-                      <text x="370" y="151" font-size="10.5" fill="#0f172a" font-weight="600">Model registry</text>
-                      <text x="370" y="162" font-size="8" fill="#94a3b8">9 AI systems</text>
-                    </g>
-
-                    <!-- evidence -->
-                    <g>
-                      <rect x="528" y="18" width="114" height="30" rx="9" fill="#f8fafc" stroke="#e2e8f0"></rect>
-                      <text x="539" y="31" font-size="10" fill="#0f172a" font-weight="600">Access review</text>
-                      <text x="539" y="42" font-size="8" fill="#10b981">fresh · 4m</text>
-
-                      <rect x="528" y="58" width="114" height="30" rx="9" fill="#f8fafc" stroke="#e2e8f0"></rect>
-                      <text x="539" y="71" font-size="10" fill="#0f172a" font-weight="600">Config export</text>
-                      <text x="539" y="82" font-size="8" fill="#10b981">fresh · 1h</text>
-
-                      <rect x="528" y="98" width="114" height="30" rx="9" fill="#f8fafc" stroke="#e2e8f0"></rect>
-                      <text x="539" y="111" font-size="10" fill="#0f172a" font-weight="600">Vendor DPA</text>
-                      <text x="539" y="122" font-size="8" fill="#f59e0b">stale · 94d</text>
-
-                      <rect x="528" y="138" width="114" height="30" rx="9" fill="#f8fafc" stroke="#e2e8f0"></rect>
-                      <text x="539" y="151" font-size="10" fill="#0f172a" font-weight="600">Model card</text>
-                      <text x="539" y="162" font-size="8" fill="#10b981">fresh · 2d</text>
-                    </g>
-                  </g>
-                </svg>
-
-                <!-- drift ticker -->
-                <div class="mt-2.5 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-xl bg-slate-50 px-4 py-2.5 text-[11px]">
-                  <span class="font-semibold text-slate-700">Blast radius</span>
-                  <span class="text-slate-500">PDPL amendment touches <span class="font-semibold text-slate-800">12 controls</span>, <span class="font-semibold text-slate-800">4 systems</span>, <span class="font-semibold text-slate-800">31 evidence items</span></span>
-                  <span class="ml-auto rounded-full bg-white px-2 py-1 font-medium text-slate-600 ring-1 ring-slate-200">Simulate change</span>
+                <!-- narration -->
+                <div class="mt-2.5 flex h-[46px] items-center gap-x-3 overflow-hidden rounded-xl bg-slate-50 px-4 text-[11px]">
+                  <span id="tg-dots" class="flex shrink-0 items-center gap-1"></span>
+                  <span id="tg-caption" class="clamp-2 text-slate-600"></span>
+                  <span id="tg-blast" class="ml-auto hidden shrink-0 text-[10px] text-slate-400 xl:inline"></span>
                 </div>
               </div>
 
@@ -255,45 +129,19 @@
                   <p class="text-xs font-semibold">Agent stream</p>
                   <span class="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2 py-0.5 text-[9px] font-semibold text-slate-600"><span class="h-1.5 w-1.5 animate-pulse rounded-full bg-rose-500"></span>LIVE</span>
                 </div>
-                <div class="mt-2 space-y-1.5 border-l border-slate-200 pl-4 text-[11px]">
-                  <div class="relative">
-                    <span class="absolute -left-[21px] top-1 h-2 w-2 rounded-full bg-emerald-500 ring-4 ring-white"></span>
-                    <p class="font-semibold text-slate-800">Regulatory Agent <span class="font-normal text-slate-400">· 2m</span></p>
-                    <p class="mt-0.5 text-slate-500">Parsed PDPL amendment, re-mapped 12 controls.</p>
-                  </div>
-                  <div class="relative">
-                    <span class="absolute -left-[21px] top-1 h-2 w-2 rounded-full bg-blue-500 ring-4 ring-white"></span>
-                    <p class="font-semibold text-slate-800">Evidence Agent <span class="font-normal text-slate-400">· 6m</span></p>
-                    <p class="mt-0.5 text-slate-500">Refreshed 31 artifacts from AWS and Okta.</p>
-                  </div>
-                  <div class="relative">
-                    <span class="absolute -left-[21px] top-1 h-2 w-2 rounded-full bg-rose-500 ring-4 ring-white"></span>
-                    <p class="font-semibold text-slate-800">Risk Agent <span class="font-normal text-slate-400">· 14m</span></p>
-                    <p class="mt-0.5 text-slate-500">Vendor exposure rose to High after SOC 2 lapse.</p>
-                  </div>
-                </div>
+                <div id="tg-agents" class="mt-2 min-h-[104px] space-y-1.5 border-l border-slate-200 pl-4 text-[11px]"></div>
 
                 <div class="mt-2.5 rounded-xl border border-slate-200 p-2.5">
                   <div class="flex items-center justify-between">
                     <p class="text-xs font-semibold">Needs a human</p>
-                    <span class="rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-semibold text-amber-700">2</span>
+                    <span id="tg-approval-count" class="rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-semibold text-amber-700">2</span>
                   </div>
-                  <div class="mt-2 space-y-1.5 text-[11px]">
-                    <div class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-rose-500"></span><span class="text-slate-600">Approve vendor offboarding — <span class="font-medium text-slate-800">Nimbus Ltd</span></span></div>
-                    <div class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500"></span><span class="text-slate-600">Sign off re-mapped PDPL controls</span></div>
-                  </div>
+                  <div id="tg-approvals" class="mt-2 min-h-[46px] space-y-1.5 text-[11px]"></div>
                 </div>
-
-
               </div>
             </div>
 
-            <div class="flex flex-wrap items-center gap-x-6 gap-y-1 border-t border-slate-200 px-5 py-2 text-[10px] text-slate-400">
-              <span>83 systems connected</span>
-              <span>0 connection errors</span>
-              <span>Next audit window: 24 Mar</span>
-              <span class="ml-auto">Every action logged and reversible</span>
-            </div>
+            <div id="tg-footer" class="flex flex-wrap items-center gap-x-6 gap-y-1 border-t border-slate-200 px-5 py-2 text-[10px] text-slate-400"></div>
           </div>
         </div>
       </div>
@@ -328,8 +176,8 @@
           <p class="mt-2 text-sm text-slate-500">continuous control testing instead of point-in-time audits</p>
         </div>
         <div>
-          <p class="text-4xl font-semibold tracking-tight text-gradient" data-count-to="30" data-count-suffix="+" data-count-final="30+">30+</p>
-          <p class="mt-2 text-sm text-slate-500">frameworks and GCC regulations mapped to a single control set</p>
+          <p class="text-4xl font-semibold tracking-tight text-gradient" data-count-to="7" data-count-suffix="" data-count-final="7">7</p>
+          <p class="mt-2 text-sm text-slate-500">UAE, global and AI frameworks mapped to a single control set</p>
         </div>
       </div>
     </section>
@@ -372,21 +220,17 @@
         <div class="reveal max-w-2xl">
           <p class="text-xs font-semibold uppercase tracking-[.18em] text-slate-400">Framework coverage</p>
           <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Map once. Comply everywhere.</h2>
-          <p class="mt-4 text-slate-500">One control set, mapped across regional regulation and global standards. Satisfy overlapping requirements without duplicating the work.</p>
+          <p class="mt-4 text-slate-500">We start with the frameworks UAE enterprises actually face — regional regulation, global standards and the new AI rules — all mapped to one control set.</p>
         </div>
         <div class="reveal mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <div class="card-hover rounded-xl border border-slate-200 p-4"><p class="text-sm font-semibold">UAE IA Standard</p><p class="mt-1 text-xs text-slate-500">National information assurance</p></div>
-          <div class="card-hover rounded-xl border border-slate-200 p-4"><p class="text-sm font-semibold">UAE PDPL</p><p class="mt-1 text-xs text-slate-500">Federal data protection</p></div>
-          <div class="card-hover rounded-xl border border-slate-200 p-4"><p class="text-sm font-semibold">ADGM &amp; DIFC</p><p class="mt-1 text-xs text-slate-500">Free-zone data regulation</p></div>
-          <div class="card-hover rounded-xl border border-slate-200 p-4"><p class="text-sm font-semibold">SAMA CSF</p><p class="mt-1 text-xs text-slate-500">Saudi financial sector</p></div>
-          <div class="card-hover rounded-xl border border-slate-200 p-4"><p class="text-sm font-semibold">ISO 27001</p><p class="mt-1 text-xs text-slate-500">Information security</p></div>
-          <div class="card-hover rounded-xl border border-slate-200 p-4"><p class="text-sm font-semibold">ISO 42001</p><p class="mt-1 text-xs text-slate-500">AI management systems</p></div>
+          <div class="card-hover rounded-xl border border-slate-200 p-4"><p class="text-sm font-semibold">UAE IA Standard v2</p><p class="mt-1 text-xs text-slate-500">National information assurance</p></div>
+          <div class="card-hover rounded-xl border border-slate-200 p-4"><p class="text-sm font-semibold">UAE PDPL</p><p class="mt-1 text-xs text-slate-500">Federal Decree-Law 45 on data protection</p></div>
           <div class="card-hover rounded-xl border border-slate-200 p-4"><p class="text-sm font-semibold">SOC 2</p><p class="mt-1 text-xs text-slate-500">Trust services criteria</p></div>
-          <div class="card-hover rounded-xl border border-slate-200 p-4"><p class="text-sm font-semibold">NIST CSF &amp; AI RMF</p><p class="mt-1 text-xs text-slate-500">Risk frameworks</p></div>
+          <div class="card-hover rounded-xl border border-slate-200 p-4"><p class="text-sm font-semibold">ISO 27001</p><p class="mt-1 text-xs text-slate-500">Information security management</p></div>
+          <div class="card-hover rounded-xl border border-slate-200 p-4"><p class="text-sm font-semibold">ISO 42001</p><p class="mt-1 text-xs text-slate-500">AI and agent governance</p></div>
+          <div class="card-hover rounded-xl border border-slate-200 p-4"><p class="text-sm font-semibold">EU AI Act</p><p class="mt-1 text-xs text-slate-500">Risk tiering and high-risk duties</p></div>
           <div class="card-hover rounded-xl border border-slate-200 p-4"><p class="text-sm font-semibold">GDPR</p><p class="mt-1 text-xs text-slate-500">EU data protection</p></div>
-          <div class="card-hover rounded-xl border border-slate-200 p-4"><p class="text-sm font-semibold">PCI DSS</p><p class="mt-1 text-xs text-slate-500">Payment security</p></div>
-          <div class="card-hover rounded-xl border border-slate-200 p-4"><p class="text-sm font-semibold">EU AI Act</p><p class="mt-1 text-xs text-slate-500">AI governance</p></div>
-          <div class="card-hover rounded-xl border border-slate-200 p-4"><p class="text-sm font-semibold">Custom frameworks</p><p class="mt-1 text-xs text-slate-500">Bring your own control set</p></div>
+          <div class="card-hover rounded-xl border border-dashed border-slate-300 bg-slate-50/60 p-4"><p class="text-sm font-semibold text-slate-500">Next on the map</p><p class="mt-1 text-xs text-slate-400">SAMA CSF · ADGM &amp; DIFC · NIST AI RMF</p></div>
         </div>
       </div>
     </section>
@@ -527,19 +371,19 @@
           <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Security</p>
           <h3 class="mt-3 text-2xl font-semibold">Stay continuously audit-ready</h3>
           <p class="mt-3 text-sm leading-6 text-slate-500">Automate evidence, control testing and remediation across security frameworks and internal policies.</p>
-          <div class="mt-8 border-t border-slate-100 pt-5 text-sm font-medium">ISO 27001 · SOC 2 · NIST →</div>
+          <div class="mt-8 border-t border-slate-100 pt-5 text-sm font-medium">ISO 27001 · SOC 2 →</div>
         </div>
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7">
           <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Regulated Industries</p>
           <h3 class="mt-3 text-2xl font-semibold">Understand every obligation</h3>
           <p class="mt-3 text-sm leading-6 text-slate-500">Map regulatory requirements to controls, owners and evidence across UAE and GCC regulatory regimes.</p>
-          <div class="mt-8 border-t border-slate-100 pt-5 text-sm font-medium">UAE · ADGM · DIFC · GCC →</div>
+          <div class="mt-8 border-t border-slate-100 pt-5 text-sm font-medium">UAE IA v2 · UAE PDPL →</div>
         </div>
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7">
           <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">AI Governance</p>
           <h3 class="mt-3 text-2xl font-semibold">Govern AI with confidence</h3>
           <p class="mt-3 text-sm leading-6 text-slate-500">Inventory AI systems, monitor controls, document decisions and prepare for emerging AI governance requirements.</p>
-          <div class="mt-8 border-t border-slate-100 pt-5 text-sm font-medium">AI inventory · Policies · Controls →</div>
+          <div class="mt-8 border-t border-slate-100 pt-5 text-sm font-medium">ISO 42001 · EU AI Act →</div>
         </div>
       </div>
     </section>
@@ -740,6 +584,557 @@
       }, { threshold: 0.4 });
       countTargets.forEach((el) => countObserver.observe(el));
     }
+
+    /* ---------------- TRUST GRAPH ---------------- */
+    (function () {
+      const root = document.getElementById('trust-graph');
+      if (!root) return;
+
+      const FRAMEWORKS = [
+        {
+          id: 'uae-ia',
+          tab: 'UAE IA v2',
+          name: 'UAE IA v2',
+          scope: 'Scope: UAE · TDRA',
+          index: 94.8,
+          delta: '↑ 4.2 pts this month',
+          bars: [['Obligation coverage', '98%', 98], ['Control health', '91%', 91], ['Evidence freshness', '96%', 96], ['Autonomy level', 'L3 · supervised', 74]],
+          edges: '2,481 live edges',
+          blast: 'IA v2 update touches 12 controls · 4 systems · 31 evidence items',
+          o: [
+            { t: 'T3 Access Control', s: '22 requirements' },
+            { t: 'T2 Asset Management', s: '14 requirements' },
+            { t: 'T7 Data Residency', s: 'amended 2d ago', tone: 'warn' },
+            { t: 'M4 Incident Mgmt', s: '11 requirements' }
+          ],
+          c: [
+            { t: 'MFA enforcement', s: 'tested 4m ago', tone: 'ok' },
+            { t: 'Asset inventory', s: 'tested 1h ago', tone: 'ok' },
+            { t: 'Data localisation', s: 're-mapping', tone: 'warn' },
+            { t: 'IR runbook', s: '2 tests failing', tone: 'risk' }
+          ],
+          s: [
+            { t: 'Okta', s: '1,839 identities' },
+            { t: 'Microsoft Entra', s: '624 devices' },
+            { t: 'AWS me-central-1', s: '312 resources' },
+            { t: 'ServiceNow', s: '46 incidents' }
+          ],
+          e: [
+            { t: 'Access review', s: 'fresh · 4m', tone: 'ok' },
+            { t: 'Asset register', s: 'fresh · 1h', tone: 'ok' },
+            { t: 'Region config', s: 'regenerating', tone: 'warn' },
+            { t: 'IR test report', s: 'stale · 94d', tone: 'risk' }
+          ],
+          oc: [[0, 0], [1, 1], [2, 2], [3, 3], [0, 2]],
+          cs: [[0, 0], [0, 1], [1, 1], [2, 2], [3, 3]],
+          se: [[0, 0], [1, 1], [2, 2], [3, 3]],
+          steps: [
+            { caption: 'TDRA amends the T7 residency requirement — the Regulatory Agent reads it in minutes.', focus: ['o2'], agent: { n: 'Regulatory Agent', t: 'now', d: 'Parsed IA v2 amendment · 9 obligations updated', c: 'emerald' } },
+            { caption: 'Truvia re-maps the affected control and traces it to AWS me-central-1.', focus: ['c2', 's2'], agent: { n: 'Mapping Agent', t: '1m', d: 'Re-mapped Data localisation · 12 dependencies', c: 'blue' } },
+            { caption: 'Evidence regenerates itself — only the stale incident-response test needs a person.', focus: ['e2', 'e3'], agent: { n: 'Evidence Agent', t: '3m', d: 'Region config refreshed · IR report flagged stale', c: 'rose' } }
+          ],
+          approvals: [['Sign off re-mapped residency controls', 'rose'], ['Approve IR runbook remediation', 'amber']],
+          footer: ['83 systems connected', '0 connection errors', 'Next audit window: 24 Mar']
+        },
+        {
+          id: 'pdpl',
+          tab: 'UAE PDPL',
+          name: 'UAE PDPL',
+          scope: 'Scope: UAE · Federal Decree-Law 45',
+          index: 92.4,
+          delta: '↑ 3.1 pts this month',
+          bars: [['Obligation coverage', '96%', 96], ['Control health', '89%', 89], ['Evidence freshness', '94%', 94], ['Autonomy level', 'L3 · supervised', 68]],
+          edges: '1,904 live edges',
+          blast: 'Transfer rule change touches 7 controls · 3 systems · 18 evidence items',
+          o: [
+            { t: 'Lawful basis', s: '8 obligations' },
+            { t: 'Data subject rights', s: '30-day response' },
+            { t: 'Cross-border transfer', s: 'new condition', tone: 'warn' },
+            { t: 'Breach notification', s: '72-hour clock' }
+          ],
+          c: [
+            { t: 'Consent registry', s: 'tested 12m ago', tone: 'ok' },
+            { t: 'DSR workflow', s: '4 open requests' },
+            { t: 'Transfer assessment', s: 're-mapping', tone: 'warn' },
+            { t: 'Breach runbook', s: 'tested 3d ago', tone: 'ok' }
+          ],
+          s: [
+            { t: 'Salesforce', s: '214k records' },
+            { t: 'HR system', s: '1,204 profiles' },
+            { t: 'AWS me-central-1', s: '312 resources' },
+            { t: 'PagerDuty', s: '0 open incidents' }
+          ],
+          e: [
+            { t: 'Consent log', s: 'fresh · 12m', tone: 'ok' },
+            { t: 'DSR register', s: 'fresh · 1d', tone: 'ok' },
+            { t: 'Transfer TIA', s: 'stale · 94d', tone: 'risk' },
+            { t: 'Breach drill', s: 'fresh · 3d', tone: 'ok' }
+          ],
+          oc: [[0, 0], [1, 1], [2, 2], [3, 3], [2, 0]],
+          cs: [[0, 0], [1, 0], [1, 1], [2, 2], [3, 3]],
+          se: [[0, 0], [1, 1], [2, 2], [3, 3]],
+          steps: [
+            { caption: 'A new cross-border transfer condition lands and is mapped to your real data flows.', focus: ['o2'], agent: { n: 'Regulatory Agent', t: 'now', d: 'Parsed PDPL executive regulation update', c: 'emerald' } },
+            { caption: 'The transfer assessment control re-binds to the systems that hold personal data.', focus: ['c2', 's2'], agent: { n: 'Mapping Agent', t: '2m', d: 'Transfer assessment linked to 3 systems', c: 'blue' } },
+            { caption: 'The out-of-date transfer impact assessment is escalated to Privacy.', focus: ['e2'], agent: { n: 'Risk Agent', t: '5m', d: 'TIA older than policy · routed to Privacy', c: 'rose' } }
+          ],
+          approvals: [['Approve updated transfer assessment', 'rose'], ['Confirm new subprocessor disclosure', 'amber']],
+          footer: ['83 systems connected', '0 connection errors', '4 data subject requests open']
+        },
+        {
+          id: 'soc2',
+          tab: 'SOC 2',
+          name: 'SOC 2 Type II',
+          scope: 'Scope: Trust services criteria',
+          index: 96.1,
+          delta: '↑ 2.4 pts this month',
+          bars: [['Obligation coverage', '99%', 99], ['Control health', '94%', 94], ['Evidence freshness', '97%', 97], ['Autonomy level', 'L3 · supervised', 81]],
+          edges: '1,610 live edges',
+          blast: 'Observation window: 31 controls sampled · 0 exceptions open',
+          o: [
+            { t: 'CC6 Logical access', s: '14 criteria' },
+            { t: 'CC7 Operations', s: '9 criteria' },
+            { t: 'A1 Availability', s: '3 criteria' },
+            { t: 'C1 Confidentiality', s: '2 criteria' }
+          ],
+          c: [
+            { t: 'MFA enforcement', s: 'tested 4m ago', tone: 'ok' },
+            { t: 'Change management', s: 'tested 20m ago', tone: 'ok' },
+            { t: 'Backup restore test', s: 'due in 6 days', tone: 'warn' },
+            { t: 'Data classification', s: 'tested 2d ago', tone: 'ok' }
+          ],
+          s: [
+            { t: 'Okta', s: '1,839 identities' },
+            { t: 'GitHub', s: '214 repositories' },
+            { t: 'AWS me-central-1', s: '312 resources' },
+            { t: 'Jira', s: '38 change tickets' }
+          ],
+          e: [
+            { t: 'Access review', s: 'fresh · 4m', tone: 'ok' },
+            { t: 'Change log', s: 'fresh · 20m', tone: 'ok' },
+            { t: 'Restore test', s: 'due in 6 days', tone: 'warn' },
+            { t: 'Classification map', s: 'fresh · 2d', tone: 'ok' }
+          ],
+          oc: [[0, 0], [1, 1], [2, 2], [3, 3], [1, 2]],
+          cs: [[0, 0], [1, 1], [1, 3], [2, 2], [3, 2]],
+          se: [[0, 0], [1, 1], [2, 2], [3, 3]],
+          steps: [
+            { caption: 'The auditor’s CC6 sample is assembled from live system state, not screenshots.', focus: ['o0', 'c0'], agent: { n: 'Evidence Agent', t: 'now', d: 'Packaged 31 CC6 artifacts for the window', c: 'emerald' } },
+            { caption: 'Truvia spots a restore test that would fall outside the observation window.', focus: ['c2', 'e2'], agent: { n: 'Risk Agent', t: '4m', d: 'Backup restore test due in 6 days · owner notified', c: 'rose' } },
+            { caption: 'Evidence stays continuously fresh across the whole period — no year-end scramble.', focus: ['e0', 'e1'], agent: { n: 'Audit Agent', t: '11m', d: 'Evidence pack refreshed · 0 exceptions', c: 'blue' } }
+          ],
+          approvals: [['Approve auditor evidence pack', 'amber'], ['Schedule backup restore test', 'amber']],
+          footer: ['83 systems connected', '0 connection errors', 'Window closes: 30 Jun']
+        },
+        {
+          id: 'iso27001',
+          tab: 'ISO 27001',
+          name: 'ISO 27001',
+          scope: 'Scope: Annex A · 93 controls',
+          index: 95.2,
+          delta: '↑ 1.8 pts this month',
+          bars: [['Obligation coverage', '97%', 97], ['Control health', '92%', 92], ['Evidence freshness', '95%', 95], ['Autonomy level', 'L3 · supervised', 76]],
+          edges: '2,140 live edges',
+          blast: 'Statement of Applicability: 93 controls mapped · 2 in remediation',
+          o: [
+            { t: 'A.5 Organizational', s: '37 controls' },
+            { t: 'A.6 People', s: '8 controls' },
+            { t: 'A.7 Physical', s: '14 controls' },
+            { t: 'A.8 Technological', s: '34 controls' }
+          ],
+          c: [
+            { t: 'Policy set', s: 'reviewed 9d ago', tone: 'ok' },
+            { t: 'Onboarding checks', s: 'tested 1d ago', tone: 'ok' },
+            { t: 'Facility access', s: '1 test failing', tone: 'risk' },
+            { t: 'Logging & monitoring', s: 'tested 8m ago', tone: 'ok' }
+          ],
+          s: [
+            { t: 'Confluence', s: '62 policies' },
+            { t: 'HR system', s: '1,204 profiles' },
+            { t: 'Badge system', s: '4 sites' },
+            { t: 'Datadog', s: '41 monitors' }
+          ],
+          e: [
+            { t: 'Policy approval', s: 'fresh · 9d', tone: 'ok' },
+            { t: 'Screening record', s: 'fresh · 1d', tone: 'ok' },
+            { t: 'Access log export', s: 'gap detected', tone: 'risk' },
+            { t: 'Monitoring report', s: 'fresh · 8m', tone: 'ok' }
+          ],
+          oc: [[0, 0], [1, 1], [2, 2], [3, 3], [3, 0]],
+          cs: [[0, 0], [1, 1], [2, 2], [3, 3], [3, 0]],
+          se: [[0, 0], [1, 1], [2, 2], [3, 3]],
+          steps: [
+            { caption: 'Annex A is mapped once, then reused by every other framework you run.', focus: ['o3', 'c3'], agent: { n: 'Mapping Agent', t: 'now', d: 'A.8 mapped · 61% reused from UAE IA', c: 'emerald' } },
+            { caption: 'A failing physical access test surfaces the moment badge logs drift.', focus: ['c2', 's2'], agent: { n: 'Risk Agent', t: '7m', d: 'Facility access test failed · Dubai site', c: 'rose' } },
+            { caption: 'Remediation opens automatically and the Statement of Applicability stays current.', focus: ['e2'], agent: { n: 'Evidence Agent', t: '9m', d: 'Gap logged · remediation task raised in Jira', c: 'blue' } }
+          ],
+          approvals: [['Approve facility access remediation', 'rose'], ['Sign off Statement of Applicability', 'amber']],
+          footer: ['83 systems connected', '0 connection errors', 'Surveillance audit: 12 Sep']
+        },
+        {
+          id: 'iso42001',
+          tab: 'ISO 42001 · AI',
+          name: 'ISO 42001',
+          scope: 'Scope: AI & agent governance',
+          index: 88.6,
+          delta: '↑ 6.5 pts this month',
+          bars: [['Obligation coverage', '91%', 91], ['Control health', '84%', 84], ['Evidence freshness', '90%', 90], ['Autonomy level', 'L2 · assisted', 55]],
+          edges: '1,286 live edges',
+          blast: '3 agents added this month · 6 controls auto-extended',
+          o: [
+            { t: 'AI policy & roles', s: '12 clauses' },
+            { t: 'AI risk assessment', s: 'per system' },
+            { t: 'Impact assessment', s: '9 AI systems', tone: 'warn' },
+            { t: 'Agent oversight', s: 'new clause', tone: 'new' }
+          ],
+          c: [
+            { t: 'Model registry', s: '9 systems tracked', tone: 'ok' },
+            { t: 'AI risk review', s: '2 pending', tone: 'warn' },
+            { t: 'Human-in-the-loop', s: 'tested 1h ago', tone: 'ok' },
+            { t: 'Agent action limits', s: 'draft control', tone: 'new' }
+          ],
+          s: [
+            { t: 'Model registry', s: '9 AI systems' },
+            { t: 'Vertex AI', s: '4 deployments' },
+            { t: 'Truvia agents', s: '6 agents running' },
+            { t: 'Bedrock', s: '2 endpoints' }
+          ],
+          e: [
+            { t: 'Model card', s: 'fresh · 2d', tone: 'ok' },
+            { t: 'Risk review', s: '2 pending', tone: 'warn' },
+            { t: 'Oversight log', s: 'fresh · 1h', tone: 'ok' },
+            { t: 'Agent audit trail', s: 'streaming', tone: 'ok' }
+          ],
+          oc: [[0, 0], [1, 1], [2, 1], [3, 2], [3, 3]],
+          cs: [[0, 0], [1, 1], [2, 2], [3, 2], [0, 3]],
+          se: [[0, 0], [1, 1], [2, 2], [3, 3]],
+          steps: [
+            { caption: 'A new agent goes live — Truvia registers it as an AI system automatically.', focus: ['o3', 's2'], agent: { n: 'Discovery Agent', t: 'now', d: 'New agent detected · added to AI inventory', c: 'emerald' } },
+            { caption: 'Oversight rules and action limits are extended to it before it can act.', focus: ['c2', 'c3'], agent: { n: 'Governance Agent', t: '2m', d: 'Human-in-the-loop policy applied to 6 agents', c: 'blue' } },
+            { caption: 'Every agent action is logged as evidence for the AI management system.', focus: ['e3'], agent: { n: 'Evidence Agent', t: '6m', d: 'Agent audit trail streaming · 4,102 actions', c: 'rose' } }
+          ],
+          approvals: [['Approve autonomy level for new agent', 'rose'], ['Review AI impact assessment', 'amber']],
+          footer: ['9 AI systems in scope', '6 agents supervised', 'Every agent action reversible']
+        },
+        {
+          id: 'eu-ai-act',
+          tab: 'EU AI Act',
+          name: 'EU AI Act',
+          scope: 'Scope: EU · risk tiering',
+          index: 81.3,
+          delta: '↑ 9.4 pts this month',
+          bars: [['Obligation coverage', '86%', 86], ['Control health', '78%', 78], ['Evidence freshness', '83%', 83], ['Autonomy level', 'L2 · assisted', 48]],
+          edges: '742 live edges',
+          blast: 'Next deadline: 2 high-risk systems · 14 controls in flight',
+          o: [
+            { t: 'System classification', s: '9 systems tiered' },
+            { t: 'High-risk duties', s: '2 systems', tone: 'warn' },
+            { t: 'Transparency duties', s: '4 systems' },
+            { t: 'GPAI obligations', s: 'horizon scan', tone: 'new' }
+          ],
+          c: [
+            { t: 'Risk tiering', s: 'reviewed 3d ago', tone: 'ok' },
+            { t: 'Technical file', s: '2 gaps', tone: 'risk' },
+            { t: 'User disclosure', s: 'tested 1d ago', tone: 'ok' },
+            { t: 'Post-market monitoring', s: 'draft control', tone: 'new' }
+          ],
+          s: [
+            { t: 'Model registry', s: '9 AI systems' },
+            { t: 'Product analytics', s: '3 surfaces' },
+            { t: 'Vertex AI', s: '4 deployments' },
+            { t: 'Support desk', s: '12 reports' }
+          ],
+          e: [
+            { t: 'Tiering record', s: 'fresh · 3d', tone: 'ok' },
+            { t: 'Technical file', s: '2 gaps', tone: 'risk' },
+            { t: 'Disclosure proof', s: 'fresh · 1d', tone: 'ok' },
+            { t: 'Incident log', s: 'fresh · 6h', tone: 'ok' }
+          ],
+          oc: [[0, 0], [1, 1], [2, 2], [3, 3], [1, 3]],
+          cs: [[0, 0], [1, 2], [2, 1], [3, 3], [3, 0]],
+          se: [[0, 0], [1, 1], [2, 2], [3, 3]],
+          steps: [
+            { caption: 'Two systems tier as high-risk — the obligations attach to them automatically.', focus: ['o0', 'o1'], agent: { n: 'Regulatory Agent', t: 'now', d: 'Classified 9 AI systems · 2 high-risk', c: 'emerald' } },
+            { caption: 'Truvia finds the holes in your technical documentation before a regulator does.', focus: ['c1', 'e1'], agent: { n: 'Risk Agent', t: '3m', d: '2 documentation gaps · owners assigned', c: 'rose' } },
+            { caption: 'Post-market monitoring wires straight into support and incident data.', focus: ['c3', 's3'], agent: { n: 'Evidence Agent', t: '8m', d: 'Incident log connected · monitoring evidence live', c: 'blue' } }
+          ],
+          approvals: [['Confirm high-risk classification', 'rose'], ['Approve technical file remediation plan', 'amber']],
+          footer: ['9 AI systems in scope', '2 high-risk systems', 'Horizon scan: daily'],
+        },
+        {
+          id: 'gdpr',
+          tab: 'GDPR',
+          name: 'GDPR',
+          scope: 'Scope: EU data subjects',
+          index: 93.7,
+          delta: '↑ 2.2 pts this month',
+          bars: [['Obligation coverage', '95%', 95], ['Control health', '90%', 90], ['Evidence freshness', '93%', 93], ['Autonomy level', 'L3 · supervised', 71]],
+          edges: '1,732 live edges',
+          blast: 'One control set covers GDPR and PDPL · 68% of evidence shared',
+          o: [
+            { t: 'Art. 30 Records', s: '24 activities' },
+            { t: 'Art. 15–22 Rights', s: '30-day response' },
+            { t: 'Art. 32 Security', s: '12 measures' },
+            { t: 'Art. 33 Breach', s: '72-hour clock' }
+          ],
+          c: [
+            { t: 'RoPA maintenance', s: 'updated 5d ago', tone: 'ok' },
+            { t: 'DSR workflow', s: '4 open requests' },
+            { t: 'Encryption standard', s: 'tested 30m ago', tone: 'ok' },
+            { t: 'Breach runbook', s: 'tested 3d ago', tone: 'ok' }
+          ],
+          s: [
+            { t: 'Salesforce', s: '214k records' },
+            { t: 'HR system', s: '1,204 profiles' },
+            { t: 'AWS eu-central-1', s: '188 resources' },
+            { t: 'PagerDuty', s: '0 open incidents' }
+          ],
+          e: [
+            { t: 'RoPA export', s: 'fresh · 5d', tone: 'ok' },
+            { t: 'DSR register', s: 'fresh · 1d', tone: 'ok' },
+            { t: 'Encryption report', s: 'fresh · 30m', tone: 'ok' },
+            { t: 'Breach drill', s: 'fresh · 3d', tone: 'ok' }
+          ],
+          oc: [[0, 0], [1, 1], [2, 2], [3, 3], [0, 1]],
+          cs: [[0, 0], [1, 0], [1, 1], [2, 2], [3, 3]],
+          se: [[0, 0], [1, 1], [2, 2], [3, 3]],
+          steps: [
+            { caption: 'Records of processing build themselves from the systems that hold the data.', focus: ['o0', 'c0'], agent: { n: 'Discovery Agent', t: 'now', d: 'RoPA refreshed · 24 processing activities', c: 'emerald' } },
+            { caption: 'A data subject request routes straight to the systems holding the record.', focus: ['c1', 's0'], agent: { n: 'Evidence Agent', t: '4m', d: 'DSR resolved in 4h · 3 systems searched', c: 'blue' } },
+            { caption: 'Shared evidence means GDPR and PDPL stop being two separate programmes.', focus: ['e0', 'e2'], agent: { n: 'Mapping Agent', t: '12m', d: '68% of GDPR evidence reused from PDPL', c: 'rose' } }
+          ],
+          approvals: [['Approve RoPA change for new vendor', 'amber'], ['Review DSR nearing deadline', 'rose']],
+          footer: ['83 systems connected', '0 connection errors', 'Every action logged and reversible']
+        }
+      ];
+
+      const TONE = {
+        idle: { stroke: '#e2e8f0', sw: 1, fill: '#ffffff', sub: '#94a3b8', dot: null, edge: '#cbd5e1' },
+        ok: { stroke: '#e2e8f0', sw: 1, fill: '#ffffff', sub: '#10b981', dot: '#10b981', edge: '#cbd5e1' },
+        warn: { stroke: '#fcd34d', sw: 1.5, fill: '#fffbeb', sub: '#f59e0b', dot: '#f59e0b', edge: '#f59e0b' },
+        risk: { stroke: '#fda4af', sw: 1.5, fill: '#fff1f2', sub: '#e11d48', dot: '#e11d48', edge: '#e11d48' },
+        new: { stroke: '#c7d2fe', sw: 1.5, fill: '#eef2ff', sub: '#6366f1', dot: '#6366f1', edge: '#a5b4fc' }
+      };
+
+      const COLS = [{ x: 18, w: 130 }, { x: 188, w: 130 }, { x: 358, w: 130 }, { x: 528, w: 114 }];
+      const KEYS = ['o', 'c', 's', 'e'];
+      const HEADS = ['OBLIGATIONS', 'CONTROLS', 'SYSTEMS', 'EVIDENCE'];
+      const DOT_COLOR = { emerald: 'bg-emerald-500', blue: 'bg-blue-500', rose: 'bg-rose-500' };
+      const PILL_COLOR = { rose: 'bg-rose-500', amber: 'bg-amber-500' };
+      const rowY = (i) => 18 + i * 40;
+      const esc = (v) => String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+      const el = {
+        tabs: document.getElementById('tg-tabs'),
+        scope: document.getElementById('tg-scope'),
+        ring: document.getElementById('tg-ring'),
+        index: document.getElementById('tg-index'),
+        delta: document.getElementById('tg-delta'),
+        bars: document.getElementById('tg-bars'),
+        fw: document.getElementById('tg-fw'),
+        edges: document.getElementById('tg-edges'),
+        svg: document.getElementById('tg-svg'),
+        dots: document.getElementById('tg-dots'),
+        caption: document.getElementById('tg-caption'),
+        blast: document.getElementById('tg-blast'),
+        agents: document.getElementById('tg-agents'),
+        approvals: document.getElementById('tg-approvals'),
+        approvalCount: document.getElementById('tg-approval-count'),
+        footer: document.getElementById('tg-footer')
+      };
+
+      const CIRC = 339.3;
+      let active = 0;
+      let step = -1;
+      let timer = null;
+      let autoAdvance = true;
+      let paused = false;
+
+      function nodeSvg(col, i, n) {
+        const c = COLS[col];
+        const y = rowY(i);
+        const tone = TONE[n.tone || 'idle'];
+        const fill = col === 3 && !n.tone ? '#f8fafc' : tone.fill;
+        const tx = c.x + (tone.dot ? 25 : 12);
+        return '<g class="tg-node" data-key="' + KEYS[col] + i + '">' +
+          '<rect x="' + c.x + '" y="' + y + '" width="' + c.w + '" height="30" rx="9" fill="' + fill + '" stroke="' + tone.stroke + '" stroke-width="' + tone.sw + '"></rect>' +
+          (tone.dot ? '<circle cx="' + (c.x + 14) + '" cy="' + (y + 15) + '" r="3.2" fill="' + tone.dot + '"></circle>' : '') +
+          '<text x="' + tx + '" y="' + (y + 13) + '" font-size="10.5" fill="#0f172a" font-weight="600">' + esc(n.t) + '</text>' +
+          '<text x="' + tx + '" y="' + (y + 24) + '" font-size="8" fill="' + tone.sub + '">' + esc(n.s) + '</text>' +
+          '</g>';
+      }
+
+      function edgeSvg(colA, colB, i, j, targetTone) {
+        const A = COLS[colA];
+        const B = COLS[colB];
+        const x1 = A.x + A.w;
+        const x2 = B.x;
+        const y1 = rowY(i) + 15;
+        const y2 = rowY(j) + 15;
+        const stroke = TONE[targetTone || 'idle'].edge;
+        return '<path class="tg-edge" data-a="' + KEYS[colA] + i + '" data-b="' + KEYS[colB] + j + '" fill="none" stroke="' + stroke + '" stroke-width="1.4" ' +
+          'd="M' + x1 + ' ' + y1 + ' C' + (x1 + 22) + ' ' + y1 + ', ' + (x2 - 22) + ' ' + y2 + ', ' + x2 + ' ' + y2 + '"></path>';
+      }
+
+      function renderGraph(f) {
+        let out = '<g font-family="Inter, sans-serif">';
+        HEADS.forEach((h, i) => {
+          out += '<text x="' + COLS[i].x + '" y="8" font-size="8.5" fill="#94a3b8" letter-spacing="1.2">' + h + '</text>';
+        });
+        out += '<g>';
+        f.oc.forEach(([i, j]) => { out += edgeSvg(0, 1, i, j, f.c[j].tone); });
+        f.cs.forEach(([i, j]) => { out += edgeSvg(1, 2, i, j, f.c[i].tone); });
+        f.se.forEach(([i, j]) => { out += edgeSvg(2, 3, i, j, f.e[j].tone); });
+        out += '</g>';
+        [f.o, f.c, f.s, f.e].forEach((col, ci) => {
+          col.forEach((n, i) => { out += nodeSvg(ci, i, n); });
+        });
+        out += '</g>';
+        el.svg.innerHTML = out;
+      }
+
+      function renderBars(f) {
+        el.bars.innerHTML = f.bars.map(([label, value, pct], i) => {
+          const fill = i === 3 ? 'bg-gradient-to-r from-cyan-500 to-violet-500' : 'bg-slate-900';
+          return '<div>' +
+            '<div class="flex justify-between text-slate-500"><span>' + esc(label) + '</span><span class="font-semibold text-slate-800">' + esc(value) + '</span></div>' +
+            '<div class="mt-1 h-1 rounded-full bg-slate-100"><div class="tg-fill h-1 rounded-full ' + fill + '" data-pct="' + pct + '" style="width:0%"></div></div>' +
+            '</div>';
+        }).join('');
+        requestAnimationFrame(() => {
+          el.bars.querySelectorAll('[data-pct]').forEach((bar) => { bar.style.width = bar.dataset.pct + '%'; });
+        });
+      }
+
+      function renderAgents(f) {
+        el.agents.innerHTML = f.steps.map((s, i) =>
+          '<div class="tg-fade relative" data-agent="' + i + '">' +
+          '<span class="absolute -left-[21px] top-1 h-2 w-2 rounded-full ' + (DOT_COLOR[s.agent.c] || 'bg-slate-400') + ' ring-4 ring-white"></span>' +
+          '<p class="font-semibold text-slate-800">' + esc(s.agent.n) + ' <span class="font-normal text-slate-400">· ' + esc(s.agent.t) + '</span></p>' +
+          '<p class="mt-0.5 text-slate-500">' + esc(s.agent.d) + '</p>' +
+          '</div>').join('');
+      }
+
+      function renderApprovals(f) {
+        el.approvalCount.textContent = f.approvals.length;
+        el.approvals.innerHTML = f.approvals.map(([text, tone]) =>
+          '<div class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full ' + (PILL_COLOR[tone] || 'bg-slate-400') + '"></span><span class="text-slate-600">' + esc(text) + '</span></div>'
+        ).join('');
+      }
+
+      function renderDots(f) {
+        el.dots.innerHTML = f.steps.map((_, i) =>
+          '<span class="tg-dot h-1.5 rounded-full bg-slate-300" data-dot="' + i + '" style="width:6px"></span>'
+        ).join('');
+      }
+
+      function animateIndex(to) {
+        const from = parseFloat(el.index.textContent) || 0;
+        if (reduceMotion) { el.index.textContent = to.toFixed(1); return; }
+        const start = performance.now();
+        const tick = (now) => {
+          const p = Math.min((now - start) / 900, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.index.textContent = (from + (to - from) * eased).toFixed(1);
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }
+
+      function setFocus(keys) {
+        el.svg.querySelectorAll('.tg-node').forEach((n) => {
+          n.classList.toggle('is-focus', keys.indexOf(n.dataset.key) > -1);
+        });
+        el.svg.querySelectorAll('.tg-edge').forEach((e) => {
+          e.classList.toggle('is-active', keys.indexOf(e.dataset.a) > -1 || keys.indexOf(e.dataset.b) > -1);
+        });
+      }
+
+      function showStep(f, i) {
+        step = i;
+        el.caption.textContent = f.steps[i].caption;
+        setFocus(f.steps[i].focus);
+        el.agents.querySelectorAll('[data-agent]').forEach((node) => {
+          node.classList.toggle('is-on', Number(node.dataset.agent) <= i);
+        });
+        el.dots.querySelectorAll('[data-dot]').forEach((dot) => {
+          const on = Number(dot.dataset.dot) === i;
+          dot.style.width = on ? '16px' : '6px';
+          dot.className = 'tg-dot h-1.5 rounded-full ' + (on ? 'bg-slate-900' : 'bg-slate-300');
+        });
+      }
+
+      function play(f) {
+        clearTimeout(timer);
+        if (reduceMotion) {
+          el.caption.textContent = f.steps[f.steps.length - 1].caption;
+          el.agents.querySelectorAll('[data-agent]').forEach((n) => n.classList.add('is-on'));
+          el.dots.querySelectorAll('[data-dot]').forEach((d, i) => {
+            const on = i === f.steps.length - 1;
+            d.style.width = on ? '16px' : '6px';
+            d.className = 'tg-dot h-1.5 rounded-full ' + (on ? 'bg-slate-900' : 'bg-slate-300');
+          });
+          setFocus([]);
+          return;
+        }
+        showStep(f, 0);
+        const advance = () => {
+          if (paused) { timer = setTimeout(advance, 800); return; }
+          if (step < f.steps.length - 1) {
+            showStep(f, step + 1);
+            timer = setTimeout(advance, 3200);
+          } else if (autoAdvance) {
+            timer = setTimeout(() => select((active + 1) % FRAMEWORKS.length), 1200);
+          } else {
+            timer = setTimeout(() => play(f), 2400);
+          }
+        };
+        timer = setTimeout(advance, 3200);
+      }
+
+      function select(i) {
+        active = i;
+        const f = FRAMEWORKS[i];
+        el.tabs.querySelectorAll('[data-fw]').forEach((tab, idx) => {
+          const on = idx === i;
+          tab.className = 'shrink-0 whitespace-nowrap rounded-full px-2 py-1 transition ' +
+            (on ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-700');
+          tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        el.scope.textContent = f.scope;
+        el.fw.textContent = f.name;
+        el.edges.textContent = f.edges;
+        el.blast.textContent = f.blast;
+        el.delta.textContent = f.delta;
+        el.ring.style.strokeDashoffset = CIRC * (1 - f.index / 100);
+        animateIndex(f.index);
+        renderBars(f);
+        renderGraph(f);
+        renderAgents(f);
+        renderApprovals(f);
+        renderDots(f);
+        el.footer.innerHTML = f.footer.map((t, idx) =>
+          '<span' + (idx === f.footer.length - 1 ? ' class="ml-auto"' : '') + '>' + esc(t) + '</span>'
+        ).join('');
+        play(f);
+      }
+
+      el.tabs.innerHTML = FRAMEWORKS.map((f, i) =>
+        '<button type="button" role="tab" data-fw="' + f.id + '" class="shrink-0 whitespace-nowrap rounded-full bg-slate-100 px-2 py-1 text-slate-500">' + esc(f.tab) + '</button>'
+      ).join('');
+
+      el.tabs.querySelectorAll('[data-fw]').forEach((tab, i) => {
+        tab.addEventListener('click', () => {
+          autoAdvance = false;
+          select(i);
+        });
+      });
+
+      root.addEventListener('mouseenter', () => { paused = true; });
+      root.addEventListener('mouseleave', () => { paused = false; });
+
+      select(0);
+    })();
   </script>
 </body>
 </html>
