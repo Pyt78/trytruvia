@@ -1,0 +1,16 @@
+{
+  "name": "trytruvia",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tailwindcss -i src/input.css -o assets/styles.css --minify",
+    "dev": "tailwindcss -i src/input.css -o assets/styles.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Landing page for trytruvia.com",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  },
+  "private": true
+}
