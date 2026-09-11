@@ -7,10 +7,15 @@
  * `credentials: 'include'`, so the session cookie is set by the API on its own
  * origin. After success it calls `router.refresh()` to re-run the server
  * components, which then see the new session.
+ *
+ * A submit before hydration must never reach the browser's native handler: with
+ * the default GET method that would put the password in the URL and in server
+ * logs. Hence `method="post"` and a submit button that stays disabled until the
+ * client handler is attached.
  */
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000';
 
@@ -24,6 +29,9 @@ export function AuthForm({ mode }: { mode: 'login' | 'signup' }) {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => setReady(true), []);
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -63,7 +71,7 @@ export function AuthForm({ mode }: { mode: 'login' | 'signup' }) {
     'min-h-11 w-full rounded-xl border border-slate-200 px-4 text-sm outline-none transition focus:border-slate-950';
 
   return (
-    <form className="mt-5 space-y-3" onSubmit={onSubmit}>
+    <form className="mt-5 space-y-3" method="post" onSubmit={onSubmit}>
       {mode === 'signup' && (
         <>
           <input required name="name" placeholder="Full name" className={field} />
@@ -82,7 +90,7 @@ export function AuthForm({ mode }: { mode: 'login' | 'signup' }) {
       {error && <p className="text-xs text-rose-600">{error}</p>}
       <button
         type="submit"
-        disabled={pending}
+        disabled={pending || !ready}
         className="min-h-11 w-full rounded-xl bg-slate-950 text-sm font-medium text-white transition hover:bg-slate-800 disabled:opacity-60"
       >
         {pending ? 'Working…' : mode === 'signup' ? 'Create workspace' : 'Sign in'}

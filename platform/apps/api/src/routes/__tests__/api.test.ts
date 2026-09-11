@@ -7,13 +7,17 @@
  * unauthenticated access, cross-tenant reads and writes, role minimums, the
  * privileges of the connecting role, and the stored password format.
  *
- * Requires `npm run db:migrate` to have run against the target database.
+ * Requires `npm run db:migrate` to have run against the target database. The
+ * connection details come from platform/.env unless the environment already
+ * supplies them, which is how CI provides its own Postgres service.
  */
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import type { FastifyInstance } from 'fastify';
 import { sql } from 'drizzle-orm';
-import { auditLogs, memberships, organizations, users, withOrg } from '@truvia/db';
+import { auditLogs, loadEnvFile, memberships, organizations, users, withOrg } from '@truvia/db';
 import { buildApp } from '../../app.js';
+
+loadEnvFile();
 
 let app: FastifyInstance;
 const password = 'correct-horse-battery';
