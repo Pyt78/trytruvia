@@ -1,3 +1,11 @@
+/**
+ * Server-side client for the platform API.
+ *
+ * Pages render on the server and forward the incoming session cookie to the API,
+ * so the browser never holds an API token and authorization is decided in one
+ * place — the API. A failed or unauthorized call returns null and the caller
+ * decides whether that means "redirect to login" or "render empty".
+ */
 import { cookies } from 'next/headers';
 
 const API_URL = process.env.API_URL ?? 'http://localhost:4000';

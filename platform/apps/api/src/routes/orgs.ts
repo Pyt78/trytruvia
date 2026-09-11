@@ -1,3 +1,17 @@
+/**
+ * Organization routes: read the organization, list and add members, read the
+ * audit log.
+ *
+ * Every handler starts with `requireMember(..., minimumRole)`, which resolves the
+ * caller's membership and returns:
+ *   401 when there is no session,
+ *   404 when the caller is not a member (an outsider learns nothing about
+ *       whether the organization exists),
+ *   403 when they are a member but below the required role.
+ *
+ * Reads then run inside `withOrg`, so Postgres enforces the same boundary a
+ * second time even if a query forgets its own `where org_id = ...` clause.
+ */
 import { desc, eq } from 'drizzle-orm';
 import type { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import { z } from 'zod';

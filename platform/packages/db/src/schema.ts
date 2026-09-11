@@ -1,3 +1,16 @@
+/**
+ * Database schema for the Truvia platform.
+ *
+ * Two kinds of table live here:
+ *   - identity tables (`users`, `sessions`) which are global and reached only
+ *     through the auth layer;
+ *   - organization scoped tables (`organizations`, `memberships`, `audit_logs`)
+ *     which carry an `org_id` and are protected by row level security.
+ *
+ * This file is the type source of truth; the SQL that actually runs against the
+ * database lives in ../migrations. Changing a column here means writing a new
+ * migration — the schema is never pushed automatically.
+ */
 import {
   index,
   jsonb,

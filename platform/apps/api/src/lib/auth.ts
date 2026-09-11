@@ -1,3 +1,13 @@
+/**
+ * Session and membership helpers.
+ *
+ * Sessions are opaque random tokens sent as httpOnly cookies; only their SHA-256
+ * digest is stored, so a database leak does not hand over live sessions.
+ *
+ * Roles are ordered (auditor < member < admin < owner) and checked with
+ * `hasRole(actual, minimum)`, so a route states the least privilege it needs
+ * instead of enumerating the roles it accepts.
+ */
 import { createHash, randomBytes } from 'node:crypto';
 import { and, eq, gt } from 'drizzle-orm';
 import { memberships, sessions, users, withUser, type Database, type MemberRole } from '@truvia/db';

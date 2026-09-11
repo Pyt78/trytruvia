@@ -1,3 +1,7 @@
+-- Base tables. Identity (users, sessions) is global; organizations, memberships
+-- and audit_logs are tenant data and get row level security in 0002.
+-- Audit rows record an actor_type as well as a user, because agents and
+-- scheduled jobs will write here too from Phase 1 onwards.
 create extension if not exists "pgcrypto";
 
 do $$ begin

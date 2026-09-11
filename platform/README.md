@@ -41,6 +41,12 @@ npm run test                # requires Postgres and a completed migration run
 npm run build
 ```
 
+## Design notes
+
+`docs/architecture.md` explains the tenancy model, the request lifecycle, the
+conventions to follow when adding tables or routes, and the known gaps going
+into Phase 1. Read it before changing anything under `packages/db`.
+
 ## Tenant isolation
 
 The API connects as `truvia_app`, a role that is neither a superuser nor

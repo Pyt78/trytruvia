@@ -1,3 +1,7 @@
+/**
+ * Environment parsing. The process refuses to start with a missing or malformed
+ * variable rather than failing later on the first request.
+ */
 import { z } from 'zod';
 
 const schema = z.object({

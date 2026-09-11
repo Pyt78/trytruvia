@@ -1,5 +1,13 @@
 'use client';
 
+/**
+ * Shared login/signup form.
+ *
+ * This is a client component that posts directly to the API with
+ * `credentials: 'include'`, so the session cookie is set by the API on its own
+ * origin. After success it calls `router.refresh()` to re-run the server
+ * components, which then see the new session.
+ */
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useState } from 'react';

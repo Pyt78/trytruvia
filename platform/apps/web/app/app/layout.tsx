@@ -1,3 +1,11 @@
+/**
+ * Authenticated application shell.
+ *
+ * The session check lives here rather than in middleware so that every page
+ * under /app shares one `/me` call, and an expired session redirects before any
+ * child page renders. Navigation entries for phases not yet built point at
+ * placeholder pages that state which phase will fill them in.
+ */
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getViewer } from '@/lib/api';

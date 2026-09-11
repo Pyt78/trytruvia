@@ -1,3 +1,13 @@
+/**
+ * API composition root.
+ *
+ * `buildApp()` returns a configured Fastify instance without listening, so tests
+ * can drive it through `app.inject()` with no network or port involved;
+ * server.ts is the only place that binds a port.
+ *
+ * One `onRequest` hook resolves the session cookie into `request.user` (or null)
+ * for every route, so no route parses cookies itself.
+ */
 import cookie from '@fastify/cookie';
 import cors from '@fastify/cors';
 import Fastify, { type FastifyInstance } from 'fastify';

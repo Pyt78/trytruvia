@@ -1,3 +1,13 @@
+/**
+ * Minimal forward-only migration runner.
+ *
+ * Applies every unapplied .sql file in ../migrations in filename order, each in
+ * its own transaction, recording it in `schema_migrations`. Re-running is safe.
+ *
+ * It connects with ADMIN_DATABASE_URL (the owner role) rather than the
+ * application role, because migrations create roles and policies that the
+ * restricted application role is deliberately not allowed to change.
+ */
 import { readdir, readFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';

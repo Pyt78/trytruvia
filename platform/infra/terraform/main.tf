@@ -1,3 +1,10 @@
+# Phase 0 AWS footprint in the UAE region. Everything customer data touches is
+# encrypted with a customer-managed key, kept private, and retained: the
+# evidence bucket is versioned and Object Locked so an artefact an auditor relies
+# on cannot be silently altered or deleted.
+#
+# Not applied yet — see README.md in this directory for the prerequisites.
+
 data "aws_availability_zones" "available" {
   state = "available"
 }

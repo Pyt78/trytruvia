@@ -1,3 +1,6 @@
+# CI for the platform monorepo only. The static marketing site at the repo root
+# is published by GitHub Pages straight from main and has no build step here,
+# hence the paths filter below.
 name: platform-ci
 
 on:

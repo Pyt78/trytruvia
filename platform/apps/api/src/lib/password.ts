@@ -1,3 +1,14 @@
+/**
+ * Password hashing with scrypt from the Node standard library — no native build
+ * step, and memory-hard enough to make offline cracking expensive.
+ *
+ * The stored format keeps its own parameters so they can be raised later without
+ * invalidating existing hashes:
+ *
+ *   scrypt$<N>$<r>$<p>$<base64 salt>$<base64 key>
+ *
+ * Comparison is constant time to avoid leaking the hash through response timing.
+ */
 import { randomBytes, scrypt, timingSafeEqual, type ScryptOptions } from 'node:crypto';
 
 const KEY_LENGTH = 64;

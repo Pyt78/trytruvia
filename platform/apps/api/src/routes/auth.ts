@@ -1,3 +1,13 @@
+/**
+ * Authentication routes: signup, login, logout and the `/me` bootstrap call the
+ * web app makes on every server render.
+ *
+ * Signup is the one flow that creates a tenant, so it is also the one flow that
+ * cannot run inside a tenant scope. It inserts the user (a global table), then
+ * calls the `provision_organization` security definer function to create the
+ * organization and its owner membership atomically. See migration 0003 for why
+ * that function exists instead of a looser row level security policy.
+ */
 import { eq, sql } from 'drizzle-orm';
 import type { FastifyInstance } from 'fastify';
 import { z } from 'zod';

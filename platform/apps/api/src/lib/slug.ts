@@ -1,3 +1,7 @@
+/**
+ * URL-safe organization slugs. Callers append a random suffix, because two
+ * customers may legitimately share a name.
+ */
 export function slugify(value: string): string {
   return value
     .toLowerCase()

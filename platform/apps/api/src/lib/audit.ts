@@ -1,3 +1,10 @@
+/**
+ * The audit log: the single place where "who did what, when" is recorded.
+ *
+ * Auditors read this table during an assessment, so entries are append-only and
+ * always carry the acting identity — a person, an agent, or the system itself.
+ * Any new mutating route is expected to call `recordAudit`.
+ */
 import { auditLogs, withOrg, type Database } from '@truvia/db';
 
 export type AuditEntry = {

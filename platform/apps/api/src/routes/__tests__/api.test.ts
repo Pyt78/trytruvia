@@ -1,3 +1,14 @@
+/**
+ * Integration tests for the API, run against a real Postgres instance — the
+ * isolation guarantees here are database behaviour, so mocking the database
+ * would test nothing.
+ *
+ * These deliberately assert the security properties rather than the happy path:
+ * unauthenticated access, cross-tenant reads and writes, role minimums, the
+ * privileges of the connecting role, and the stored password format.
+ *
+ * Requires `npm run db:migrate` to have run against the target database.
+ */
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import type { FastifyInstance } from 'fastify';
 import { sql } from 'drizzle-orm';

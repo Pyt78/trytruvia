@@ -1,3 +1,19 @@
+/**
+ * Database connection and the two tenancy scopes every query runs in.
+ *
+ * The application connects as `truvia_app`, a role that is neither a superuser
+ * nor BYPASSRLS, so row level security applies to it unconditionally. Scope is
+ * passed to Postgres as a transaction-local setting rather than a WHERE clause:
+ *
+ *   withOrg(db, orgId, tx => ...)    -- truvia.org_id  : one organization
+ *   withUser(db, userId, tx => ...)  -- truvia.user_id : one person, used for
+ *                                      the lookups that happen before an
+ *                                      organization is chosen
+ *
+ * Outside these helpers the connection has no scope set, and every org-scoped
+ * table returns zero rows. That is intentional: forgetting `withOrg` fails
+ * closed (empty result) instead of leaking another tenant's data.
+ */
 import { drizzle } from 'drizzle-orm/postgres-js';
 import { sql } from 'drizzle-orm';
 import postgres from 'postgres';
